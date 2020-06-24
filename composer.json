@@ -9,6 +9,11 @@
       "name": "bluesoul",
       "email": "github@nags.me",
       "role": "maintainer"
+    },
+    {
+      "name": "Ross Williams",
+      "email": "rossjrw@gmail.com",
+      "role": "maintainer"
     }
   ],
   "support": {
@@ -18,5 +23,8 @@
   },
   "autoload": {
     "classmap": ["Text/"]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.2"
   }
 }
