@@ -45,7 +45,7 @@ class Text_Wiki_Parse_Note extends Text_Wiki_Parse {
                         '\[\[note\]\]\n' . 
                         '(.*?)' .             # Contents of note - no nesting
                         '\[\[\/note\]\]' . 
-                        '/msix';
+                        '/msi';
 
     /**
      *

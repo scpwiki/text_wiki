@@ -48,7 +48,7 @@ class Text_Wiki_Parse_Clearfloat extends Text_Wiki_Parse {
                         '([~]{4,})' .   # ~~~~
                         '(>|<)?' .      # Optional directional modifier
                         '$' . 
-                        '/mx';
+                        '/m';
 
     /**
      *

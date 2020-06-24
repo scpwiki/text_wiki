@@ -64,7 +64,7 @@ class Text_Wiki_Parse_Image extends Text_Wiki_Parse {
                         '(?:\]\])' .              # End opening image tag
                         '(?:(.*?)' .              # Capture any text inside the image element
                         '\[\[\/image\]\])?' .     # Allow end tag. Content + end tag is not required
-                        '/isx';
+                        '/is';
 
     /**
      * The regular expressions used to check ecternal urls

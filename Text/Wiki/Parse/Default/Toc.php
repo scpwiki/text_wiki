@@ -58,7 +58,7 @@ class Text_Wiki_Parse_Toc extends Text_Wiki_Parse {
                         '(\s.*)?' .    # Parameters
                         '\]\]' . 
                         '(\n)*' .      # Allow any number of newlines
-                        '/mx';
+                        '/m';
     # The newlines capture may interfere with a [[newlines]] module
 
     /**

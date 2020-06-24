@@ -52,7 +52,7 @@ class Text_Wiki_Parse_Raw extends Text_Wiki_Parse {
                         '@@' . 
                         '(.*?[^@]?)' .   # Match anything, up to a @
                         '@@' . 
-                        '/x';
+                        '/';
 
     /**
      *

@@ -53,7 +53,7 @@ class Text_Wiki_Parse_Html extends Text_Wiki_Parse {
                         '(.+?)\n' . 
                         '\<\/html\>' . 
                         '(\s|$)' . 
-                        '/msix';
+                        '/msi';
 
     /**
     *

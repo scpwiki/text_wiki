@@ -54,7 +54,7 @@ class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
                     '\n' .     # A newline
                     '\s*?' .   # Any amount of whitespace, including none
                     '\n' .     # A further newline
-                    '/mx';
+                    '/m';
 
     public $conf = array(
         'skip' => array('blockquote', // are we sure about this one?

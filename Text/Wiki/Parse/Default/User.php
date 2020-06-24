@@ -44,7 +44,7 @@ class Text_Wiki_Parse_User extends Text_Wiki_Parse {
                         'user\s' . 
                         '([^\]]+)' .   # Parameters (e.g. user name)
                         '\]\]' . 
-                        '/ix';
+                        '/i';
 
     function process(&$matches) {
         $userName = $matches[2];

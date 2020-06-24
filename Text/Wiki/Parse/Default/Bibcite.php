@@ -48,7 +48,7 @@ class Text_Wiki_Parse_Bibcite extends Text_Wiki_Parse {
                         'bibcite\s' .        # Module name and whitespace
                         '([a-z0-9]+)' .      # Alphanumeric citation
                         '\)\)' .             # Closing parens
-                        '/ix';
+                        '/i';
 
     function process(&$matches) {
         $label = $matches[1];

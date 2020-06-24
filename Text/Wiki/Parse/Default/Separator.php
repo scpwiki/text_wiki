@@ -50,7 +50,7 @@ class Text_Wiki_Parse_Separator extends Text_Wiki_Parse {
                         '^' . 
                         '([=]{4,})' . 	# "====", four or more =
                         '$' . 
-                        '/mx';
+                        '/m';
 
     /**
     *

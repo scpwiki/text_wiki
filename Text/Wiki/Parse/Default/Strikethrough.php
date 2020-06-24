@@ -47,7 +47,7 @@ class Text_Wiki_Parse_Strikethrough extends Text_Wiki_Parse {
                         '\-\-' . 
                         '([^\s](?:.*?[^\s])?)' .   # Match anything that does not start or end with whitespace
                         '\-\-' . 
-                        '/x';
+                        '/';
 
     /**
      *

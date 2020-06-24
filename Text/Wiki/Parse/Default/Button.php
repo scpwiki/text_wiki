@@ -34,7 +34,7 @@ class Text_Wiki_Parse_Button extends Text_Wiki_Parse {
                         '([a-z0-9\-_]+)' .   # Button name
                         '(?:\s+(.+?))?' .    # Optional button parameters
                         '\]\]' .             # Closing brackets
-                        '/isx';
+                        '/is';
 
     function process(&$matches)
     {

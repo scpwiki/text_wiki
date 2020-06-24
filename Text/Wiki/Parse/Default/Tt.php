@@ -57,7 +57,7 @@ class Text_Wiki_Parse_Tt extends Text_Wiki_Parse {
                         '\{\{' . 
                         '(\{*?.*?\}*?)' .   # Allows }, then text, then }. Sorry, what?
                         '\}\}' . 
-                        '/x';
+                        '/';
 
     /**
     *

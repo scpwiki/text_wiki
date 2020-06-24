@@ -53,7 +53,7 @@ class Text_Wiki_Parse_Module extends Text_Wiki_Parse {
                             '(.*?)' .             # Content betweent tags - no nesting
                             '\[\[\/module\]\]' .  # Closing tag
                         ')?' .                    # The content and end tag is optional
-                        '/ismx';
+                        '/ism';
 
     /**
      *
@@ -94,7 +94,7 @@ class Text_Wiki_Parse_Module extends Text_Wiki_Parse {
                             '([a-z0-9_\-\/]+)' .      # Module name, alphanumeric + some chars
                             '(\s+.*?)?' .             # Optional module parameters
                             '\]\]' .                  # End opening tag
-                            '/smix', $con, $dummy) > 1) {
+                            '/smi', $con, $dummy) > 1) {
             return preg_replace('/^\[\[module/', '[[module654', $con);
         }
 

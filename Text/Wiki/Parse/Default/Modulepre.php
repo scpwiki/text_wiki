@@ -52,7 +52,7 @@ class Text_Wiki_Parse_Modulepre extends Text_Wiki_Parse {
                             '(.*?)' .             # Content betweent tags - no nesting
                             '\[\[\/module\]\]' .  # Closing tag
                         ')?' .                    # The content and end tag is optional
-                        '/ismx';
+                        '/ism';
 
     /**
      *

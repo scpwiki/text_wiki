@@ -45,7 +45,7 @@ class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse {
                         '\[\[gallery(\s[^\]]*?)?\]\]' . 
                         '(?:((?:\n:\s[^\n]+)+)\n' . 
                         '\[\[\/gallery\]\])?' . 
-                        '/msix';
+                        '/msi';
 
     /**
      *

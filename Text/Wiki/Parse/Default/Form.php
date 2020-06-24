@@ -49,7 +49,7 @@ class Text_Wiki_Parse_Form extends Text_Wiki_Parse {
                         '---\s*\n' .             # Three hyphens (???)
                         '(.*)\n' .               # Anything again
                         '\[\[\/form\]\]' . 
-                        '/isx';
+                        '/is';
 
     /**
      *

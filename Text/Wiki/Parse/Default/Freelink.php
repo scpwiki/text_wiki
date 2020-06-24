@@ -59,7 +59,7 @@ class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse {
                         ')?' .                      # Link text is optional
                         '()' .                      # Are you kidding me
                         '\]\]\]' .                  # Closing brackets
-                        '/x';
+                        '/';
 
     /**
     *
