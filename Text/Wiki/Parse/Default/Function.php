@@ -36,7 +36,7 @@ class Text_Wiki_Parse_Function extends Text_Wiki_Parse {
                         '(.+?)\n' . 
                         '(\<\/function\>)' . 
                         '(\s|$)' . 
-                        '/msix';
+                        '/msi';
 
     function process(&$matches)
     {

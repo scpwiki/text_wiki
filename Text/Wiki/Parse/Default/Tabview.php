@@ -53,7 +53,7 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
                             ')+' .                             # Require at least one tab
                         ')' . 
                         '\[\[\/(?:tabview|tabs)\]\]\s*' .      # Tabview closing tag
-                        '/msix';
+                        '/msi';
 
     private $_startTabToken;
     private $_endTabToken;
@@ -101,7 +101,7 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
                                             '\]\]' . 
                                             '(.*?)' .              # Contents of tab - cannot contain [[tab]]
                                             '\[\[\/tab\]\]\n*' .   # Tab closing tag
-                                            '/msix',
+                                            '/msi',
             array($this, '_handleTab'), $content);
 
         $options = array('args' => $args, 'type' => 'start',
@@ -139,7 +139,7 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
                         '=' . 
                         '"[^"]+"' .          # Parameter value in quotes
                         '$' .                # End of text
-                        '/six',
+                        '/si',
             trim($matches[1]))) {
                 $argString .= ' ' . $matches[1];
                 $ff = true;

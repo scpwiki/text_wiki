@@ -52,7 +52,7 @@ class Text_Wiki_Parse_Newline extends Text_Wiki_Parse {
                         '([^\n])' .   # Match any character that is not a newline
                         '\n' .        # Then a newline
                         '(?!\n)' .    # ...so long as it is not followed by another newline
-                        '/mx';
+                        '/m';
 
     /**
     *

@@ -43,7 +43,7 @@ class Text_Wiki_Parse_Size extends Text_Wiki_Parse {
                         '\[\[size\s([^\]]+)\]\]' .   # Opening tag including parameters
                         '((?:(?R)|.)*?)' .           # Any content in between including other sizes
                         '\[\[\/size\]\]' .           # Closing tag
-                        '/msix';
+                        '/msi';
     /**
     *
     * Generates a token entry for the matched text.  Token options are:

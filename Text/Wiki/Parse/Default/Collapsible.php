@@ -51,7 +51,7 @@ class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse {
                         '\]\]' . 
                         '(.*?)' .          # Contents of collapsible - no nesting
                         '\[\[\/collapsible\]\]\s*' . 
-                        '/msix';
+                        '/msi';
 
     /**
      *

@@ -46,7 +46,7 @@ class Text_Wiki_Parse_Comment extends Text_Wiki_Parse {
                         '\[!\-\-' .   # [!--
                         '(.*?)' .     # Any text - no nesting
                         '\-\-\]' .    # --]
-                        '/six';
+                        '/si';
 
     /**
      *

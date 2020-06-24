@@ -55,7 +55,7 @@ class Text_Wiki_Parse_Strong extends Text_Wiki_Parse {
                         '\*\*' . 
                         '([^\s\n](?:.*?[^\s\n])?)' .   # Match anything that does not start or end with whitespace
                         '\*\*' . 
-                        '/x';
+                        '/';
 
     /**
      *

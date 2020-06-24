@@ -47,7 +47,7 @@ class Text_Wiki_Parse_Revise extends Text_Wiki_Parse {
                         '\@\@' . 
                         '(\{*?.*?\}*?)' .   # Text between any number of braces, including none
                         '\@\@' . 
-                        '/x';
+                        '/';
 
     /**
     *

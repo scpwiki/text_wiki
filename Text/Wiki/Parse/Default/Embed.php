@@ -42,7 +42,7 @@ class Text_Wiki_Parse_Embed extends Text_Wiki_Parse {
                         '\[\[embed(?:audio|video)?\]\]' . 
                         '(.*?)' . 
                         '\[\[\/embed(?:audio|video)?\]\]' . 
-                        '/msix';
+                        '/msi';
     /**
     *
     * Generates a token entry for the matched text.  Token options are:

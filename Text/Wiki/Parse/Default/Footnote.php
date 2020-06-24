@@ -46,7 +46,7 @@ class Text_Wiki_Parse_Footnote extends Text_Wiki_Parse {
                         '\[\[footnote\]\]' . 
                         '(.*?)' . 
                         '\[\[\/footnote\]\]' . 
-                        '/sx';
+                        '/s';
 
     function process(&$matches)
     {

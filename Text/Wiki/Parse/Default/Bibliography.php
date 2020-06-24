@@ -41,7 +41,7 @@ class Text_Wiki_Parse_Bibliography extends Text_Wiki_Parse {
                     '(.*?)' .                     # Contents
                     '\[\[\/bibliography\]\]' .    # End tag
                     '[\s]*$' .                    # Allow whitespace until end of the line
-                    '/smx';
+                    '/sm';
         $this->wiki->source = preg_replace_callback($regex,
             array(&$this, 'process'), $this->wiki->source, 1);
     }

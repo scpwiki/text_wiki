@@ -57,7 +57,7 @@ class Text_Wiki_Parse_Emphasis extends Text_Wiki_Parse {
                         "(?:.*?[^\s])?" .       # Anything that does not end in whitespace
                         ")" . 
                         "\/\/" .                # //
-                        "/x";
+                        "/";
 
     /**
     *

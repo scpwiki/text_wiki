@@ -44,7 +44,7 @@ class Text_Wiki_Parse_Social extends Text_Wiki_Parse {
                         '\[\[social' . 
                         '(\s+[^\]]+?)?' .   # Parameters
                         '\]\]' . 
-                        '/isx';
+                        '/is';
 
     function process(&$matches)
     {

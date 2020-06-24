@@ -151,7 +151,7 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
                         "(?:\/[^\s\t\n\"'".$this->wiki->delim."]*)" . 
                         ")\s" . 
                         "([^\]".$this->wiki->delim."]+)\]" . 
-                        "/x";
+                        "/";
 
         // use a custom callback processing method to generate
         // the replacement text for matches.
@@ -178,7 +178,7 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
                             '\s' .             # A whitespace
                             '([^\]]+)' .       # Match anything up until a closing bracket
                             '\]' . 
-                            '/x';
+                            '/';
             $this->wiki->source = preg_replace_callback(
                 $tmp_regex,
                 array(&$this, 'processPV'),
@@ -198,7 +198,7 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
                         '(\*)?' .                      # Any amount of asterisks
                         '(' . $this->regex . ')' . 
                         '(.*?)' .                      # Then anything, but as few as possible?
-                        '/x';
+                        '/';
 
         // use the standard callback for inline URLs
         $this->wiki->source = preg_replace_callback(

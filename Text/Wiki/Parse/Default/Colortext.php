@@ -48,12 +48,12 @@ class Text_Wiki_Parse_Colortext extends Text_Wiki_Parse {
      */
 
     public $regex =     '/' . 
-                        '\#\#' . 
+                        '##' . 
                         '(.+?)' .   # Colou?r
                         '\|' .      # Pipe to split colour and text
                         '(.+?)' .   # Text
-                        '\#\#' . 
-                        '/x';
+                        '##' . 
+                        '/';
 
     /**
      *

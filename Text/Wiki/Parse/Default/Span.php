@@ -46,7 +46,7 @@ class Text_Wiki_Parse_Span extends Text_Wiki_Parse {
                         '\]\]' . 
                         '((?:(?R)|.)*?)' .   # Contents - nesting is ok
                         '\[\[\/span\]\]' . 
-                        '/msix';
+                        '/msi';
 
     /**
      *

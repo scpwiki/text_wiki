@@ -49,7 +49,7 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
     function parse(){
 
     	 	// described emails
-        $tmp_regex = '/\[(' . $this->regex . ') (.+?)\]/ix';
+        $tmp_regex = '/\[(' . $this->regex . ')\s(.+?)\]/i';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
             array(&$this, 'processDescr'),
@@ -57,7 +57,7 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
         );
 
     		// standalone emails
-        $tmp_regex = '/' . $this->regex . '/ix';
+        $tmp_regex = '/' . $this->regex . '/i';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
             array(&$this, 'process'),

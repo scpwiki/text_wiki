@@ -44,7 +44,7 @@ class Text_Wiki_Parse_File extends Text_Wiki_Parse {
                         '(.+?)' .          # Name of file
                         '(?:\|(.+?))?' .   # Pipe, then link text (optional)
                         '\]\]' . 
-                        '/ix';
+                        '/i';
 
     function process(&$matches)
     {

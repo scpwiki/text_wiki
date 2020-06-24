@@ -55,7 +55,7 @@ class Text_Wiki_Parse_Math extends Text_Wiki_Parse {
                         '((?:(?R)|.)*?)\n' .        # Contents - nesting is ok for some reason
                         '\[\[\/math\]\]' .          # Closing tag
                         '(\s|$)' . 
-                        '/msix';
+                        '/msi';
 
     /**
     *

@@ -46,7 +46,7 @@ class Text_Wiki_Parse_Divprefilter extends Text_Wiki_Parse {
                         '\[\[\/div\]\]' . 
                         '(\s*?)' . 
                         '\[\[div' . 
-                        '/msix';
+                        '/msi';
     /**
     *
     * Generates a token entry for the matched text.  Token options are:

@@ -49,7 +49,7 @@ class Text_Wiki_Parse_Anchor extends Text_Wiki_Parse {
                         '(\[\[\#\s)' .             # Two brackets, then hash
                         '([-_A-Za-z0-9.%]+?)' .   # Contents of anchor
                         '(\]\])' .                # Closing brackets
-                        '/ix';
+                        '/i';
 
     /**
      *

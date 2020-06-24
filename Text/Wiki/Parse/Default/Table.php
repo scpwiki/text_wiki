@@ -57,7 +57,7 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
                         ')' . 
                         '(\n)' .         # Newline
                         '(?!(\|\|))' .   # Assert that the newline is not followed by ||
-                        '/sx';
+                        '/s';
 
     /**
     *
