@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render {
+class Text_Wiki_Render
+{
 
     /**
     *
@@ -108,20 +109,17 @@ class Text_Wiki_Render {
         if ($this->format && ! $this->rule &&
             isset($this->wiki->formatConf[$this->format]) &&
             is_array($this->wiki->formatConf[$this->format])) {
-
             // this is a format render object
             $this->conf = array_merge(
                 $this->conf,
                 $this->wiki->formatConf[$this->format]
             );
-
         }
 
         // is there a format and a rule?
         if ($this->format && $this->rule &&
             isset($this->wiki->renderConf[$this->format][$this->rule]) &&
             is_array($this->wiki->renderConf[$this->format][$this->rule])) {
-
             // this is a rule render object
             $this->conf = array_merge(
                 $this->conf,
@@ -179,8 +177,8 @@ class Text_Wiki_Render {
         }
     }
 
-    function renderError($message){
-    		return '<div class="error-block">'.$message.'</div>';
+    function renderError($message)
+    {
+            return '<div class="error-block">'.$message.'</div>';
     }
-
 }

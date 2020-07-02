@@ -20,7 +20,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Bibliography extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Bibliography extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -37,7 +38,8 @@ class Text_Wiki_Render_Xhtml_Bibliography extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         //if(count($bibitems) == 0){return '';} // render nothing if no footnotes.
         if ($options['type'] == 'start') {
             $title = $options['title'];
@@ -53,6 +55,5 @@ class Text_Wiki_Render_Xhtml_Bibliography extends Text_Wiki_Render {
         if ($options['type'] == 'end') {
             return '</div>';
         }
-
     }
 }

@@ -23,15 +23,16 @@
  * @author Michal Frackowiak
  *
  */
-class Text_Wiki_Parse_Date extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Date extends Text_Wiki_Parse
+{
 
 
 
-    public $regex =     '/' . 
-                        '\[\[date\s+' . 
+    public $regex =     '/' .
+                        '\[\[date\s+' .
                         '([0-9]+)' .      # A number, for a given time. Required.
                         '(\s+.*?)?' .     # Optional extra parameters (format)
-                        '\]\]' . 
+                        '\]\]' .
                         '/';
     /**
     *
@@ -51,19 +52,19 @@ class Text_Wiki_Parse_Date extends Text_Wiki_Parse {
     function process(&$matches)
     {
 
-    	$options = array();
-    	$options['timestamp'] = $matches[1];
+        $options = array();
+        $options['timestamp'] = $matches[1];
 
-    	$attr = $this->getAttrs(trim($matches[2]));
-    	foreach($attr as $key => $a){
-    		$options[$key] = $attr[$key];
-    	}
+        $attr = $this->getAttrs(trim($matches[2]));
+        foreach ($attr as $key => $a) {
+            $options[$key] = $attr[$key];
+        }
 
-    	$token = $this->wiki->addToken(
-            $this->rule, $options
+        $token = $this->wiki->addToken(
+            $this->rule,
+            $options
         );
 
         return $token;
     }
-
 }

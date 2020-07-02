@@ -29,7 +29,8 @@
 *
 */
 
-class Text_Wiki_Parse_Mathinline extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Mathinline extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -42,12 +43,12 @@ class Text_Wiki_Parse_Mathinline extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[' . 
+    public $regex =     '/' .
+                        '\[\[' .
                         '\$' .      # $
                         '(.*?)' .   # Contents
                         '\$' .      # $
-                        '\]\]' . 
+                        '\]\]' .
                         '/';
     /**
     *
@@ -66,7 +67,7 @@ class Text_Wiki_Parse_Mathinline extends Text_Wiki_Parse {
 
     function process(&$matches)
     {
-    	$content = trim($matches[1]);
+        $content = trim($matches[1]);
 
         $options = array('content'=>$content);
 

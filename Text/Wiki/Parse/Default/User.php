@@ -25,7 +25,8 @@
  *
  */
 
-class Text_Wiki_Parse_User extends Text_Wiki_Parse {
+class Text_Wiki_Parse_User extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -38,15 +39,16 @@ class Text_Wiki_Parse_User extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '\[\[' . 
+    public $regex =     '/' .
+                        '\[\[' .
                         '(\*)?' .      # Optional asterisk
-                        'user\s' . 
+                        'user\s' .
                         '([^\]]+)' .   # Parameters (e.g. user name)
-                        '\]\]' . 
+                        '\]\]' .
                         '/i';
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $userName = $matches[2];
         $options = array('userName' => $userName);
         if ($matches[1] == '*') {
@@ -54,6 +56,5 @@ class Text_Wiki_Parse_User extends Text_Wiki_Parse {
         }
 
         return $this->wiki->addToken($this->rule, $options);
-
     }
 }

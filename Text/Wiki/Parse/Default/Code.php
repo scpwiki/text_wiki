@@ -37,7 +37,8 @@
  *
  */
 
-class Text_Wiki_Parse_Code extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Code extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -73,7 +74,8 @@ class Text_Wiki_Parse_Code extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         // are there additional attribute arguments?
         $args = trim($matches[1]);
 

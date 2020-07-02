@@ -27,7 +27,8 @@
  *
  */
 
-class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -40,11 +41,11 @@ class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '^' . 
-                        '\[\[gallery(\s[^\]]*?)?\]\]' . 
-                        '(?:((?:\n:\s[^\n]+)+)\n' . 
-                        '\[\[\/gallery\]\])?' . 
+    public $regex =     '/' .
+                        '^' .
+                        '\[\[gallery(\s[^\]]*?)?\]\]' .
+                        '(?:((?:\n:\s[^\n]+)+)\n' .
+                        '\[\[\/gallery\]\])?' .
                         '/msi';
 
     /**
@@ -62,7 +63,8 @@ class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $attr = $this->getAttrs(trim($matches[1]));
         $sources = $matches[2];
@@ -74,6 +76,5 @@ class Text_Wiki_Parse_Gallery extends Text_Wiki_Parse {
         $token = $this->wiki->addToken($this->rule, $options);
 
         return "\n\n" . $token . "\n\n";
-
     }
 }

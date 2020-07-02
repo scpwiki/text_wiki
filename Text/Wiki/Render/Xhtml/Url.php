@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render
+{
 
     public $conf = array(
         //'target' => '_blank',
@@ -60,14 +61,13 @@ class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render {
         $ext = strtolower(substr($href, $pos + 1));
         $href0 = $href;
         $href = htmlspecialchars($href);
-        if($href=="#"){
-        	$href="javascript:;";
+        if ($href=="#") {
+            $href="javascript:;";
         }
 
         // does the filename extension indicate an image file?
         if ($this->getConf('images') &&
             in_array($ext, $this->getConf('img_ext', array()))) {
-
             // create alt text for the image
             if (! isset($text) || $text == '') {
                 $text = basename($href);
@@ -77,17 +77,15 @@ class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render {
             // generate an image tag
             $css = $this->formatConf(' class="%s"', 'css_img');
             $output = "<img$css src=\"$href\" alt=\"$text\" />";
-
         } else {
-
             // should we build a target clause?
             if ($href[0] == '#' ||
-            	strtolower(substr($href, 0, 7)) == 'mailto:') {
-            	// targets not allowed for on-page anchors
-            	// and mailto: links.
+                strtolower(substr($href, 0, 7)) == 'mailto:') {
+                // targets not allowed for on-page anchors
+                // and mailto: links.
                 $target = '';
             } else {
-				// allow targets on non-anchor non-mailto links
+                // allow targets on non-anchor non-mailto links
                 $target = $this->getConf('target');
             }
 
@@ -96,7 +94,7 @@ class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render {
             $css = $this->formatConf(' class="%s"', "css_$type");
             $output = "<a$css href=\"$href\"";
 
-			$target = $options['target'];
+            $target = $options['target'];
 
             if ($target) {
                 // use a "popup" window.  this is XHTML compliant, suggested by
@@ -118,13 +116,13 @@ class Text_Wiki_Render_Xhtml_Url extends Text_Wiki_Render {
 
         /* Add to array of external links. */
         $wiki = $this->wiki;
-		if($wiki->vars['externalLinks'] == null){
-			$wiki->vars['externalLinks'] = array();
-		}
-		if(preg_match(';^https?://;', $href0)){
-			$href0 = substr($href0,0,2000);
-			$wiki->vars['externalLinks'][$href0]=$href0;
-		}
+        if ($wiki->vars['externalLinks'] == null) {
+            $wiki->vars['externalLinks'] = array();
+        }
+        if (preg_match(';^https?://;', $href0)) {
+            $href0 = substr($href0, 0, 2000);
+            $wiki->vars['externalLinks'][$href0]=$href0;
+        }
 
 
         return $output;

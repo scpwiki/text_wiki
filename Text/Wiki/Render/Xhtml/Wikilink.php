@@ -28,7 +28,8 @@
 
 use DB\PagePeer;
 
-class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render
+{
 
     public $conf = array(
         'pages' => array(), // set to null or false to turn off page checks
@@ -57,8 +58,7 @@ class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
     function token($options)
     {
         extract($options);
-        if($site){
-
+        if ($site) {
             $o = '<a href="'. GlobalProperties::$HTTP_SCHEMA .'://'.$site.'.'.GlobalProperties::$URL_DOMAIN.'/'.$page.'">';
             $o .= $text;
             $o .= '</a>';
@@ -73,7 +73,7 @@ class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
         if (isset($this->conf['exists_callback'])) {
             $callback =& $this->conf['exists_callback'];
         } else {
-        	$callback = false;
+            $callback = false;
         }
 
         if ($callback) {
@@ -91,15 +91,15 @@ class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
             }
         }
 
-		if($exists && $textFromTitle){
-			// get displayed text from the page title
-			$pageObj = PagePeer::instance()->selectByPrimaryKey($exists);
-			$text = $pageObj->getTitleOrUnixName();
-		}
+        if ($exists && $textFromTitle) {
+            // get displayed text from the page title
+            $pageObj = PagePeer::instance()->selectByPrimaryKey($exists);
+            $text = $pageObj->getTitleOrUnixName();
+        }
 
-		if(!$exists && $textFromTitle){
-			$text = $page;
-		}
+        if (!$exists && $textFromTitle) {
+            $text = $page;
+        }
 
         // convert *after* checking against page names so as not to mess
         // up what the user typed and what we're checking.
@@ -107,21 +107,20 @@ class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
         $anchor = htmlspecialchars(trim($anchor));
         $text = htmlspecialchars(trim($text));
 
-       	if($nonbr){
-       		$text = str_replace(' ', '&nbsp;', $text);
-       	}
+        if ($nonbr) {
+            $text = str_replace(' ', '&nbsp;', $text);
+        }
 
         // does the page exist?
         if ($exists) {
-
             // PAGE EXISTS.
-			// store it in the array
+            // store it in the array
 
-			$wiki = $this->wiki;
-			if($wiki->vars['internalLinksExist'] == null){
-				$wiki->vars['internalLinksExist'] = array();
-			}
-			$wiki->vars['internalLinksExist'][$exists]=$exists;
+            $wiki = $this->wiki;
+            if ($wiki->vars['internalLinksExist'] == null) {
+                $wiki->vars['internalLinksExist'] = array();
+            }
+            $wiki->vars['internalLinksExist'][$exists]=$exists;
 
             // link to the page view, but we have to build
             // the HREF.  we support both the old form where
@@ -140,28 +139,24 @@ class Text_Wiki_Render_Xhtml_Wikilink extends Text_Wiki_Render {
             // get the CSS class and generate output
             $css = $this->formatConf(' class="%s"', 'css');
             $output = "<a$css href=\"$href\">$text</a>";
-
         } else {
-        		$wiki = $this->wiki;
-			if($wiki->vars['internalLinksNotExist'] == null){
-				$wiki->vars['internalLinksNotExist'] = array();
-			}
-			$wiki->vars['internalLinksNotExist'][$page] = $page;
+                $wiki = $this->wiki;
+            if ($wiki->vars['internalLinksNotExist'] == null) {
+                $wiki->vars['internalLinksNotExist'] = array();
+            }
+            $wiki->vars['internalLinksNotExist'][$page] = $page;
 
             // PAGE DOES NOT EXIST.
-			//WikiTransformation::$internalLinksNotExist[$page] = $page; //which is the page unix name!
+            //WikiTransformation::$internalLinksNotExist[$page] = $page; //which is the page unix name!
 
             // link to a create-page url, but only if new_url is set
             $href = $this->getConf('new_url', null);
 
             // set the proper HREF
             if (! $href || trim($href) == '') {
-
                 // no useful href, return the text as it is
                 $output = $text;
-
             } else {
-
                 // yes, link to the new-page href, but we have to build
                 // it.  we support both the old form where
                 // the page always comes at the end, and the new

@@ -33,7 +33,8 @@
 *
 */
 
-class Text_Wiki_Parse_Postfilter extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Postfilter extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -46,26 +47,38 @@ class Text_Wiki_Parse_Postfilter extends Text_Wiki_Parse {
     function parse()
     {
 
-    	// fix TOC tags within entries
+        // fix TOC tags within entries
 
         // convert DOS line endings
-        $this->wiki->source = str_replace("\r\n", "\n",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\r\n",
+            "\n",
+            $this->wiki->source
+        );
 
         // convert Macintosh line endings
-        $this->wiki->source = str_replace("\r", "\n",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\r",
+            "\n",
+            $this->wiki->source
+        );
 
         // trim "whitespace lines"
         $this->wiki->source = preg_replace("/^\s+$/m", '', $this->wiki->source);
 
         // concat lines ending in a backslash
-        $this->wiki->source = str_replace("\\\n", "",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\\\n",
+            "",
+            $this->wiki->source
+        );
 
         // convert tabs to four-spaces
-        $this->wiki->source = str_replace("\t", "    ",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\t",
+            "    ",
+            $this->wiki->source
+        );
 
         // add extra newlines at the top and end; this
         // seems to help many rules.

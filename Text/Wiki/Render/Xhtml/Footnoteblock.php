@@ -18,7 +18,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Footnoteblock extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Footnoteblock extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -35,7 +36,8 @@ class Text_Wiki_Render_Xhtml_Footnoteblock extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         $footnotes = $this->wiki->vars['footnotes'];
         if (count($footnotes) == 0) {
             return '';
@@ -55,18 +57,18 @@ class Text_Wiki_Render_Xhtml_Footnoteblock extends Text_Wiki_Render {
             return '</div>';
         }
         /*
-    		$footnotes = $this->wiki->vars['footnotes'];
-    		if(count($footnotes) == 0){return '';} // render nothing if no footnotes.
-    		$out = '<div class="footnotes-footer">';
-    		$out .= '<div class="title">Footnotes</div>';
-    		foreach($footnotes as $id => $content){
-    			$out .= '<div class="footnote-footer" id="footnote-'.$id.'">';
-    			$out .= '<a href="javascript:;" ' .
-    					'onclick="WIKIDOT.page.utils.scrollToReference(\'footnoteref-'.$id.'\')">'.$id . '</a>. ' .
-    							'<span class="content">'.$content.'</span>';
-    			$out .= '</div>';
-    		}
-    		$out .= '</div>';
+            $footnotes = $this->wiki->vars['footnotes'];
+            if(count($footnotes) == 0){return '';} // render nothing if no footnotes.
+            $out = '<div class="footnotes-footer">';
+            $out .= '<div class="title">Footnotes</div>';
+            foreach($footnotes as $id => $content){
+                $out .= '<div class="footnote-footer" id="footnote-'.$id.'">';
+                $out .= '<a href="javascript:;" ' .
+                        'onclick="WIKIDOT.page.utils.scrollToReference(\'footnoteref-'.$id.'\')">'.$id . '</a>. ' .
+                                '<span class="content">'.$content.'</span>';
+                $out .= '</div>';
+            }
+            $out .= '</div>';
         return $out;
         */
     }

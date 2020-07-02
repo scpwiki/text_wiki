@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_SpecialChar extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_SpecialChar extends Text_Wiki_Render
+{
 
     public $types = array('~bs~' => '&#92;',
                        '~hs~' => '&nbsp;',

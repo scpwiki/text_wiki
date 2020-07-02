@@ -36,7 +36,8 @@
  *
  */
 
-class Text_Wiki_Parse_Underline extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Underline extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -51,10 +52,10 @@ class Text_Wiki_Parse_Underline extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '__' . 
+    public $regex =     '/' .
+                        '__' .
                         '([^\s](?:.*?[^\s])?)' .   # Match anything so long as it does not start or end with whitespace
-                        '__' . 
+                        '__' .
                         '/';
 
     /**
@@ -73,7 +74,8 @@ class Text_Wiki_Parse_Underline extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $start = $this->wiki->addToken($this->rule, array(
             'type' => 'start'));
         $end = $this->wiki->addToken($this->rule, array(

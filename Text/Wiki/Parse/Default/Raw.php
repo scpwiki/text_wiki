@@ -34,7 +34,8 @@
  *
  */
 
-class Text_Wiki_Parse_Raw extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Raw extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -47,11 +48,11 @@ class Text_Wiki_Parse_Raw extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '(?<!@)' .      # Assert that text is not preceded by @
-                        '@@' . 
+                        '@@' .
                         '(.*?[^@]?)' .   # Match anything, up to a @
-                        '@@' . 
+                        '@@' .
                         '/';
 
     /**
@@ -69,7 +70,8 @@ class Text_Wiki_Parse_Raw extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $options = array('text' => $matches[1]);
         return $this->wiki->addToken($this->rule, $options);
     }

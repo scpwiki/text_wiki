@@ -23,9 +23,10 @@
  * @author Michal Frackowiak
  *
  */
-class Text_Wiki_Parse_Iframe extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Iframe extends Text_Wiki_Parse
+{
 
-	 public $conf = array(
+     public $conf = array(
         'schemes' => array(
             'http://',
             'https://',
@@ -35,33 +36,33 @@ class Text_Wiki_Parse_Iframe extends Text_Wiki_Parse {
             'mailto:',
             'mms://'
         )
-    );
+     );
 
-	public $regex = '';
+     public $regex = '';
 
-	function __construct($obj){
-		parent::__construct($obj);
+     function __construct($obj)
+     {
+         parent::__construct($obj);
 
-        // convert the list of recognized schemes to a regex-safe string,
-        // where the pattern delim is a slash
-        $tmp = array();
-        $list = $this->getConf('schemes', array());
-        foreach ($list as $val) {
-            $tmp[] = preg_quote($val, '/');
-        }
-        $schemes = implode('|', $tmp);
+         // convert the list of recognized schemes to a regex-safe string,
+         // where the pattern delim is a slash
+         $tmp = array();
+         $list = $this->getConf('schemes', array());
+         foreach ($list as $val) {
+             $tmp[] = preg_quote($val, '/');
+         }
+         $schemes = implode('|', $tmp);
 
-        // build the regex
-        $urlRegex =
+         // build the regex
+         $urlRegex =
                     "(?:(?:$schemes)" .                         // allowed schemes
                     "(?:" .                                     // start pattern
                     "[^ \\/\"\'{$this->wiki->delim}]*\\/" .     // no spaces, backslashes, slashes, double-quotes, single quotes, or delimiters;
                     ")*" .                                      // end pattern
                     "[^ \\t\\n\\/\"{$this->wiki->delim}]*?)";
 
-		$this->regex = '/\[\[iframe\s+('.$urlRegex.')(\s+.*?)?\]\]/si';
-
-	}
+         $this->regex = '/\[\[iframe\s+('.$urlRegex.')(\s+.*?)?\]\]/si';
+     }
 
     /**
     *
@@ -78,26 +79,25 @@ class Text_Wiki_Parse_Iframe extends Text_Wiki_Parse {
     *
     */
 
-    function process(&$matches)
-    {
+     function process(&$matches)
+     {
 
-    	$options = array();
-    	$options['src'] = $matches[1];
+         $options = array();
+         $options['src'] = $matches[1];
 
-    	$attr = $this->getAttrs(trim($matches[2]));
+         $attr = $this->getAttrs(trim($matches[2]));
 
-    	$iframeAttributes = array('align', 'frameborder', 'height', 'scrolling', 'width', 'class', 'style');
+         $iframeAttributes = array('align', 'frameborder', 'height', 'scrolling', 'width', 'class', 'style');
 
-    	foreach($iframeAttributes as $a){
-    		$options[$a] = $attr[$a];
-    	}
+         foreach ($iframeAttributes as $a) {
+             $options[$a] = $attr[$a];
+         }
 
-    	$token = $this->wiki->addToken(
-            $this->rule, $options
-        );
+         $token = $this->wiki->addToken(
+             $this->rule,
+             $options
+         );
 
-        return $token;
-
-    }
-
+         return $token;
+     }
 }

@@ -19,7 +19,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Typography extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Typography extends Text_Wiki_Render
+{
 
     public $replacements = array("``" => '&#8220;', "''" => '&#8221;',
         ",," => '&#8222;', "`" => '&#8216;', "'" => '&#8217;',
@@ -43,7 +44,8 @@ class Text_Wiki_Render_Xhtml_Typography extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         return ($this->replacements[$options['char']]);
     }
 }

@@ -19,113 +19,114 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Social extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Social extends Text_Wiki_Render
+{
 
     public $conf = array();
 
-    private $sites = Array(
+    private $sites = array(
 
-        'blinkbits' => Array('name' => 'blinkbits',
+        'blinkbits' => array('name' => 'blinkbits',
             'favicon' => 'blinkbits.png',
             'url' => 'http://www.blinkbits.com/bookmarklets/save.php?v=1&amp;source_url=PERMALINK&amp;title=TITLE&amp;body=TITLE'),
 
-        'blinklist' => Array('name' => 'BlinkList',
+        'blinklist' => array('name' => 'BlinkList',
             'favicon' => 'blinklist.png',
             'url' => 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Description=&amp;Url=PERMALINK&amp;Title=TITLE'),
 
-        'blogmarks' => Array('name' => 'blogmarks',
+        'blogmarks' => array('name' => 'blogmarks',
             'favicon' => 'blogmarks.png',
             'url' => 'http://blogmarks.net/my/new.php?mini=1&amp;simple=1&amp;url=PERMALINK&amp;title=TITLE'),
 
-        'co.mments' => Array('name' => 'co.mments',
+        'co.mments' => array('name' => 'co.mments',
             'favicon' => 'co.mments.gif',
             'url' => 'http://co.mments.com/track?url=PERMALINK&amp;title=TITLE'),
 
-        'connotea' => Array('name' => 'connotea',
+        'connotea' => array('name' => 'connotea',
             'favicon' => 'connotea.png',
             'url' => 'http://www.connotea.org/addpopup?continue=confirm&amp;uri=PERMALINK&amp;title=TITLE'),
 
-        'del.icio.us' => Array('name' => 'del.icio.us',
+        'del.icio.us' => array('name' => 'del.icio.us',
             'favicon' => 'delicious.png',
             'url' => 'http://del.icio.us/post?url=PERMALINK&amp;title=TITLE'),
 
-        'de.lirio.us' => Array('name' => 'De.lirio.us',
+        'de.lirio.us' => array('name' => 'De.lirio.us',
             'favicon' => 'delirious.png',
             'url' => 'http://de.lirio.us/rubric/post?uri=PERMALINK;title=TITLE;when_done=go_back'),
 
-        'digg' => Array('name' => 'digg', 'favicon' => 'digg.png',
+        'digg' => array('name' => 'digg', 'favicon' => 'digg.png',
             'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE'),
 
-        'fark' => Array('name' => 'Fark', 'favicon' => 'fark.png',
+        'fark' => array('name' => 'Fark', 'favicon' => 'fark.png',
             'url' => 'http://cgi.fark.com/cgi/fark/edit.pl?new_url=PERMALINK&amp;new_comment=TITLE&amp;new_comment=BLOGNAME&amp;linktype=Misc')// To post to a different category, see the drop-down box labeled "Link Type" at
         // http://cgi.fark.com/cgi/fark/submit.pl for a complete list
         ,
 
-        'feedmelinks' => Array('name' => 'feedmelinks',
+        'feedmelinks' => array('name' => 'feedmelinks',
             'favicon' => 'feedmelinks.png',
             'url' => 'http://feedmelinks.com/categorize?from=toolbar&amp;op=submit&amp;url=PERMALINK&amp;name=TITLE'),
 
-        'furl' => Array('name' => 'Furl', 'favicon' => 'furl.png',
+        'furl' => array('name' => 'Furl', 'favicon' => 'furl.png',
             'url' => 'http://www.furl.net/storeIt.jsp?u=PERMALINK&amp;t=TITLE'),
 
-        'linkagogo' => Array('name' => 'LinkaGoGo',
+        'linkagogo' => array('name' => 'LinkaGoGo',
             'favicon' => 'linkagogo.png',
             'url' => 'http://www.linkagogo.com/go/AddNoPopup?url=PERMALINK&amp;title=TITLE'),
 
-        'ma.gnolia' => Array('name' => 'Ma.gnolia',
+        'ma.gnolia' => array('name' => 'Ma.gnolia',
             'favicon' => 'magnolia.png',
             'url' => 'http://ma.gnolia.com/beta/bookmarklet/add?url=PERMALINK&amp;title=TITLE&amp;description=TITLE'),
 
-        'newsvine' => Array('name' => 'NewsVine',
+        'newsvine' => array('name' => 'NewsVine',
             'favicon' => 'newsvine.png',
             'url' => 'http://www.newsvine.com/_tools/seed&amp;save?u=PERMALINK&amp;h=TITLE'),
 
-        'netvouz' => Array('name' => 'Netvouz',
+        'netvouz' => array('name' => 'Netvouz',
             'favicon' => 'netvouz.png',
             'url' => 'http://www.netvouz.com/action/submitBookmark?url=PERMALINK&amp;title=TITLE&amp;description=TITLE'),
 
-        'rawsugar' => Array('name' => 'RawSugar',
+        'rawsugar' => array('name' => 'RawSugar',
             'favicon' => 'rawsugar.png',
             'url' => 'http://www.rawsugar.com/tagger/?turl=PERMALINK&amp;tttl=TITTLE'),
 
-        'reddit' => Array('name' => 'Reddit',
+        'reddit' => array('name' => 'Reddit',
             'favicon' => 'reddit.png',
             'url' => 'http://reddit.com/submit?url=PERMALINK&amp;title=TITLE'),
 
-        'scuttle' => Array('name' => 'scuttle',
+        'scuttle' => array('name' => 'scuttle',
             'favicon' => 'scuttle.png',
             'url' => 'http://www.scuttle.org/bookmarks.php/maxpower?action=add&amp;address=PERMALINK&amp;title=TITLE&amp;description=TITLE'),
 
-        'shadows' => Array('name' => 'Shadows',
+        'shadows' => array('name' => 'Shadows',
             'favicon' => 'shadows.png',
             'url' => 'http://www.shadows.com/features/tcr.htm?url=PERMALINK&amp;title=TITLE'),
 
-        'simpy' => Array('name' => 'Simpy', 'favicon' => 'simpy.png',
+        'simpy' => array('name' => 'Simpy', 'favicon' => 'simpy.png',
             'url' => 'http://www.simpy.com/simpy/LinkAdd.do?href=PERMALINK&amp;title=TITLE'),
 
-        'smarking' => Array('name' => 'Smarking',
+        'smarking' => array('name' => 'Smarking',
             'favicon' => 'smarking.png',
             'url' => 'http://smarking.com/editbookmark/?url=PERMALINK&amp;description=TITLE'),
 
-        'spurl' => Array('name' => 'Spurl', 'favicon' => 'spurl.png',
+        'spurl' => array('name' => 'Spurl', 'favicon' => 'spurl.png',
             'url' => 'http://www.spurl.net/spurl.php?url=PERMALINK&amp;title=TITLE'),
 
-        'tailrank' => Array('name' => 'TailRank',
+        'tailrank' => array('name' => 'TailRank',
             'favicon' => 'tailrank.png',
             'url' => 'http://tailrank.com/share/?text=&amp;link_href=PERMALINK&amp;title=TITLE'),
 
-        'wists' => Array('name' => 'Wists', 'favicon' => 'wists.png',
+        'wists' => array('name' => 'Wists', 'favicon' => 'wists.png',
             'url' => 'http://wists.com/r.php?c=&amp;r=PERMALINK&amp;title=TITLE'),
 
-        'yahoomyweb' => Array('name' => 'YahooMyWeb',
+        'yahoomyweb' => array('name' => 'YahooMyWeb',
             'favicon' => 'yahoomyweb.png',
             'url' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u=PERMALINK&amp;=TITLE'),
 
-        'yahoomyweb2' => Array('name' => 'YahooMyWeb',
+        'yahoomyweb2' => array('name' => 'YahooMyWeb',
             'favicon' => 'yahoomyweb.png',
             'url' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u=PERMALINK&amp;=TITLE'),
 
-        'facebook' => Array('name' => 'Facebook',
+        'facebook' => array('name' => 'Facebook',
             'url' => 'http://www.facebook.com/share.php?u=PERMALINK',
             'favicon' => 'facebook.gif',
             'onclick' => "window.open('http://www.facebook.com/sharer.php?u=PERMALINK&t=TITLE','sharer','toolbar=0,status=0,width=626,height=436');return false;"));
@@ -143,7 +144,8 @@ class Text_Wiki_Render_Xhtml_Social extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         $sites = trim($options['sites']);
 
         // split sites by ", "
@@ -175,10 +177,8 @@ class Text_Wiki_Render_Xhtml_Social extends Text_Wiki_Render {
             $url = str_replace('BLOGNAME', urlencode($wikiSite->getName()), $url);
             $out .= '<a href="' . $url . '" style="margin: 0 2px">';
             $out .= '<img src="' . $imageUrl . $site['favicon'] . '" alt="' . $site['name'] . '"/></a>';
-
         }
 
         return $out;
-
     }
 }

@@ -27,7 +27,8 @@
  *
  */
 
-class Text_Wiki_Parse_Note extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Note extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -40,11 +41,11 @@ class Text_Wiki_Parse_Note extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '(\n)?' . 
-                        '\[\[note\]\]\n' . 
+    public $regex =     '/' .
+                        '(\n)?' .
+                        '\[\[note\]\]\n' .
                         '(.*?)' .             # Contents of note - no nesting
-                        '\[\[\/note\]\]' . 
+                        '\[\[\/note\]\]' .
                         '/msi';
 
     /**
@@ -62,7 +63,8 @@ class Text_Wiki_Parse_Note extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $content = $matches[2];
 
@@ -74,6 +76,5 @@ class Text_Wiki_Parse_Note extends Text_Wiki_Parse {
             'type' => 'end'));
 
         return $matches[1] . $matches[1] . $start . "\n\n" . $content . "\n\n" . $end;
-
     }
 }

@@ -28,25 +28,32 @@
  *
  */
 
-class Text_Wiki_Parse_Bibliography extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Bibliography extends Text_Wiki_Parse
+{
 
     public $regex = null;
 
-    function parse() {
-        $regex =    '/' . 
+    function parse()
+    {
+        $regex =    '/' .
                     '^' .                         # Start of line
                     '\[\[bibliography' .          # Tag name
                     '(\s+[^\]]+)?' .              # Parameters
-                    '\]\]' . 
+                    '\]\]' .
                     '(.*?)' .                     # Contents
                     '\[\[\/bibliography\]\]' .    # End tag
                     '[\s]*$' .                    # Allow whitespace until end of the line
                     '/sm';
-        $this->wiki->source = preg_replace_callback($regex,
-            array(&$this, 'process'), $this->wiki->source, 1);
+        $this->wiki->source = preg_replace_callback(
+            $regex,
+            array(&$this, 'process'),
+            $this->wiki->source,
+            1
+        );
     }
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $inner = $matches[2];
         $args = $this->getAttrs($matches[1]);
         $title = $args['title'];
@@ -58,7 +65,7 @@ class Text_Wiki_Parse_Bibliography extends Text_Wiki_Parse {
         $bi = $this->wiki->parseObj['Bibitem'];
 
         $inside = preg_replace_callback(
-            '/' . 
+            '/' .
             '^' .                # Start of line
             ':\s?' .             # Colon, then optional whitespace
             '([a-z0-9]+)' .      # Lowercase alphanumeric bib item name
@@ -67,15 +74,17 @@ class Text_Wiki_Parse_Bibliography extends Text_Wiki_Parse {
             '(.*)' .             # Rest of the line is the item definition
             '$' .                # End of line
             '/mix',
-            array(&$bi, 'process'), $inner);
+            array(&$bi, 'process'),
+            $inner
+        );
 
         return "\n" . $this->wiki->addToken($this->rule, array(
             'type' => 'start', 'title' => $title)) . str_replace("\n", " ", $inside) . $this->wiki->addToken($this->rule, array(
             'type' => 'end')) . "\n";
     }
 
-    function insertBibitem($matches) {
+    function insertBibitem($matches)
+    {
         return $matches[2];
     }
-
 }

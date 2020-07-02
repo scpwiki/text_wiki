@@ -32,7 +32,8 @@
  *
  */
 
-class Text_Wiki_Parse_Colortext extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Colortext extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -47,12 +48,12 @@ class Text_Wiki_Parse_Colortext extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '##' . 
+    public $regex =     '/' .
+                        '##' .
                         '(.+?)' .   # Colou?r
                         '\|' .      # Pipe to split colour and text
                         '(.+?)' .   # Text
-                        '##' . 
+                        '##' .
                         '/';
 
     /**
@@ -74,7 +75,8 @@ class Text_Wiki_Parse_Colortext extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $start = $this->wiki->addToken($this->rule, array(
             'type' => 'start',
             'color' => $matches[1]));

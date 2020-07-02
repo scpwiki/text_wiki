@@ -34,7 +34,8 @@
  *
  */
 
-class Text_Wiki_Parse_Rawold extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Rawold extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -64,7 +65,8 @@ class Text_Wiki_Parse_Rawold extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $options = array('text' => $matches[1]);
         return $this->wiki->addToken($this->rule, $options);
     }

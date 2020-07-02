@@ -41,19 +41,20 @@
 *
 */
 
-class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse
+{
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '\[\[\[' .                  # Opening brackets
                         '([^\[\]\|\#]+)' .          # Target page name
-                        '\s*' . 
+                        '\s*' .
                         '(' .                       # Match a URL fragment after the page name
-                        '\#' . 
+                        '\#' .
                         '[A-Za-z]' .                # Require that first letter is alphanumeric
-                        '[-A-Za-z0-9_:.]*' . 
+                        '[-A-Za-z0-9_:.]*' .
                         ')?' .                      # URL fragment is optional
-                        '\s*' . 
-                        '(' . 
+                        '\s*' .
+                        '(' .
                         '\|' .                      # Pipe to delimit link text
                         '[^\]\|\[\#]*' .            # Link text
                         ')?' .                      # Link text is optional
@@ -88,18 +89,18 @@ class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse {
         $text = $matches[3];
         $anchor = $matches[2];
 
-        if($page[0] == '_'){
-        		$page = substr($page, 1);
-        		$nonbr = true;
+        if ($page[0] == '_') {
+                $page = substr($page, 1);
+                $nonbr = true;
         }
         // check if references to another site too.
         $site = null;
 
-        if(strpos($page, '::')){
-            $site = substr($page,0,strpos($page, '::'));
+        if (strpos($page, '::')) {
+            $site = substr($page, 0, strpos($page, '::'));
             $site = WDStringUtils::toUnixName($site);
-            $page = substr($page,strpos($page, '::')+2);
-            if(!$page){
+            $page = substr($page, strpos($page, '::')+2);
+            if (!$page) {
                 $page = $site;
             }
         }
@@ -108,13 +109,12 @@ class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse {
         if (trim($text) == '') {
             // no
             $text = $page;
-            if(strpos($text, ':') != false){
-				$text = substr($text, strpos($text, ':')+1);
-        	}
-        }elseif(trim($text) == '|'){
-        	// get $text from the page title (if exists)
-        	$textFromTitle = true;
-
+            if (strpos($text, ':') != false) {
+                $text = substr($text, strpos($text, ':')+1);
+            }
+        } elseif (trim($text) == '|') {
+            // get $text from the page title (if exists)
+            $textFromTitle = true;
         } else {
             // yes, strip the leading | character
             $text = substr($text, 1);
@@ -127,14 +127,14 @@ class Text_Wiki_Parse_Freelink extends Text_Wiki_Parse {
 
         // set the options
         $options = array(
-            'site'	=> $site,
+            'site'  => $site,
             'page'   => $page,
             'text'   => $text,
             'anchor' => $anchor,
             'textFromTitle' => $textFromTitle
         );
-        if($nonbr){
-        		$options['nonbr']=true;
+        if ($nonbr) {
+                $options['nonbr']=true;
         }
 
         // return a token placeholder

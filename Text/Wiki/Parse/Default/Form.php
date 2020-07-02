@@ -30,7 +30,8 @@
  *
  */
 
-class Text_Wiki_Parse_Form extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Form extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -43,12 +44,12 @@ class Text_Wiki_Parse_Form extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '\[\[form\]\]\s*\n' . 
+    public $regex =     '/' .
+                        '\[\[form\]\]\s*\n' .
                         '(.*)\n' .               # Anything then a newline
                         '---\s*\n' .             # Three hyphens (???)
                         '(.*)\n' .               # Anything again
-                        '\[\[\/form\]\]' . 
+                        '\[\[\/form\]\]' .
                         '/is';
 
     /**
@@ -68,7 +69,8 @@ class Text_Wiki_Parse_Form extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $formYaml = $matches[1];
         $dataYaml = $matches[2];
 

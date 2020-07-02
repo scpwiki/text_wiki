@@ -20,7 +20,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Divalign extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Divalign extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -37,7 +38,8 @@ class Text_Wiki_Render_Xhtml_Divalign extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         $align = $options['align'];
 
         if ($options['type'] == 'start') {
@@ -47,6 +49,5 @@ class Text_Wiki_Render_Xhtml_Divalign extends Text_Wiki_Render {
         if ($options['type'] == 'end') {
             return "</div>";
         }
-
     }
 }

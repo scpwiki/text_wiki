@@ -33,7 +33,8 @@
  *
  */
 
-class Text_Wiki_Parse_Anchor extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Anchor extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -45,7 +46,7 @@ class Text_Wiki_Parse_Anchor extends Text_Wiki_Parse {
      * @var string
      *
      */
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '(\[\[\#\s)' .             # Two brackets, then hash
                         '([-_A-Za-z0-9.%]+?)' .   # Contents of anchor
                         '(\]\])' .                # Closing brackets
@@ -65,13 +66,16 @@ class Text_Wiki_Parse_Anchor extends Text_Wiki_Parse {
      * the source text.
      *
      */
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $name = $matches[2];
 
-        $start = $this->wiki->addToken($this->rule,
-                array(
-                    'name' => $name));
+        $start = $this->wiki->addToken(
+            $this->rule,
+            array(
+            'name' => $name)
+        );
 
         // done, place the script output directly in the source
         return $start;

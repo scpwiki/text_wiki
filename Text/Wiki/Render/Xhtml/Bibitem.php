@@ -20,7 +20,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Bibitem extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Bibitem extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -37,7 +38,8 @@ class Text_Wiki_Render_Xhtml_Bibitem extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         if ($options['type'] == "start") {
             $idPrefix = $this->getConf("id_prefix");
             $label = $options['label'];
@@ -49,5 +51,4 @@ class Text_Wiki_Render_Xhtml_Bibitem extends Text_Wiki_Render {
             return '</div>';
         }
     }
-
 }

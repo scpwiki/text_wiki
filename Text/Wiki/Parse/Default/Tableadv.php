@@ -27,28 +27,30 @@
  *
  */
 
-class Text_Wiki_Parse_Tableadv extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Tableadv extends Text_Wiki_Parse
+{
 
-    public $regex =     ';' . 
+    public $regex =     ';' .
                         '\n\[\[table' .                        # Start a table after a new line
                         '(\s.*?)?\]\]' .                       # Allow parameters on the table
-                        '(\s*' . 
+                        '(\s*' .
                             '(?:\[\[row' .                     # Start a row
                                 '(?:\s[^\]]*)?' .              # Allow parameters on the row
-                                '\]\]\s*' . 
+                                '\]\]\s*' .
                                 '(?:\[\[(column|col|cell)' .   # Start a column or cell
                                     '(?:\s[^\]]*)?\]\]' .      # Allow parameters on the column or cell
                                     '(?:(?R)|.)*?' .           # Cell contents: another table, or anything else
                                 '\[\[/(column|col|cell)' .     # End the column or cell
                                 '\]\]\s*)+' .                  # Allow at least one column or cell
                             '\[\[/row\]\]\s*)+' .              # Allow at least one row
-                        ')' . 
+                        ')' .
                         '\[\[/table\]\]\n' .                   # Force a new line after the table
                         ';sxi';
 
     private $_tmpSource = null;
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $content = $matches[2];
         $attr = $this->getAttrs(trim($matches[1]));
         $options = array();
@@ -63,54 +65,70 @@ class Text_Wiki_Parse_Tableadv extends Text_Wiki_Parse {
 
 
         $content = preg_replace_callback(
-            $this->regex, array(&$this, 'process'), $content);
+            $this->regex,
+            array(&$this, 'process'),
+            $content
+        );
 
         // look for rows
-        $content = preg_replace_callback(   ';' . 
+        $content = preg_replace_callback(
+            ';' .
                                             '(?:\n)?' .                      # Allow an optional new line
                                             '\[\[row' .                      # Start a new row
                                             '(\s[^\]]*)?' .                  # Allow parameters on row
-                                            '\]\]\s*' . 
-                                            '(' . 
-                                                '(' . 
-                                                    '\[\[' . 
+                                            '\]\]\s*' .
+                                            '(' .
+                                                '(' .
+                                                    '\[\[' .
                                                     '(column|col|cell)' .    # Start a new column or cell
                                                     '(\s[^\]]*)?' .          # Allow parameters on column or cell
-                                                    '\]\].*?' . 
+                                                    '\]\].*?' .
                                                     '' .                  # No content is permitted
-                                                    '\[\[/' . 
+                                                    '\[\[/' .
                                                     '(column|col|cell)' .    # Close column or cell
-                                                    '\]\]\s*' . 
-                                                ')+' . 
+                                                    '\]\]\s*' .
+                                                ')+' .
                                             ')\[\[/row\]\]' .                # Close row
                                             '(?:\n)?' .                      # Allow an optional new line
                                             ';msix',
-            array($this, '_handleRow'), $content);
+            array($this, '_handleRow'),
+            $content
+        );
 
-        $start = $this->wiki->addToken($this->rule,
-            array_merge($options, array('type' => 'start')));
+        $start = $this->wiki->addToken(
+            $this->rule,
+            array_merge($options, array('type' => 'start'))
+        );
         $end = $this->wiki->addToken($this->rule, array('type' => 'end'));
         return "\n\n" . $start . $content . $end . "\n\n";
     }
 
-    function parse() {
+    function parse()
+    {
 
         $this->wiki->source = preg_replace_callback(
-            $this->regex, array(&$this, 'process'), $this->wiki->source);
+            $this->regex,
+            array(&$this, 'process'),
+            $this->wiki->source
+        );
     }
 
-    private function _handleRow($matches) {
+    private function _handleRow($matches)
+    {
         $content = $matches[2];
         $attr = $this->getAttrs(trim($matches[1]));
 
-        $content = preg_replace_callback(   ';' . 
+        $content = preg_replace_callback(
+            ';' .
                                             '(?:\n)?' .                                  # Optional new line
                                             '\[\[(?:column|col|cell)(\s[^\]]*)?\]\]' .   # Opening column or cell
                                                 '(.*?)' .                                # Content (anything)
                                             '\[\[/(column|col|cell)\]\]' .               # Closing column or cell
                                             '(?:\n)?' .                                  # Optional new line
                                             ';msix',
-            array($this, '_handleCell'), $content);
+            array($this, '_handleCell'),
+            $content
+        );
         $options = array();
         if ($attr['class']) {
             $options['class'] = $attr['class'];
@@ -123,10 +141,10 @@ class Text_Wiki_Parse_Tableadv extends Text_Wiki_Parse {
         $end = $this->wiki->addToken($this->rule, array(
             'type' => 'rowEnd'));
         return $start . $content . $end;
-
     }
 
-    private function _handleCell($matches) {
+    private function _handleCell($matches)
+    {
         $content = $matches[2];
         $attr = $this->getAttrs(trim($matches[1]));
         $options = array();

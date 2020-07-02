@@ -36,7 +36,8 @@
 *
 */
 
-class Text_Wiki_Parse_List extends Text_Wiki_Parse {
+class Text_Wiki_Parse_List extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -51,17 +52,17 @@ class Text_Wiki_Parse_List extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/^' . 
-                        '(' . 
-                            '(\*|#) .*\n' . 
-                        ')' . 
-                        '(?!' . 
-                            '\2 |' . 
-                            '(?: ' . 
-                                '{1,}(' . 
-                                        '(?:\*|#)|\n' . 
-                                    ')' . 
-                            ')' . 
+    public $regex =     '/^' .
+                        '(' .
+                            '(\*|#) .*\n' .
+                        ')' .
+                        '(?!' .
+                            '\2 |' .
+                            '(?: ' .
+                                '{1,}(' .
+                                        '(?:\*|#)|\n' .
+                                    ')' .
+                            ')' .
                         ')/Usm';
 
     /**
@@ -123,7 +124,6 @@ class Text_Wiki_Parse_List extends Text_Wiki_Parse {
 
         // loop through each list-item element.
         foreach ($list as $key => $val) {
-
             // $val[0] is the full matched list-item line
             // $val[1] is the number of initial spaces (indent level)
             // $val[2] is the list item type (* or #)
@@ -147,7 +147,6 @@ class Text_Wiki_Parse_List extends Text_Wiki_Parse {
 
             // add a level to the list?
             if ($level > count($stack)) {
-
                 // the current indent level is greater than the
                 // number of stack elements, so we must be starting
                 // a new list.  push the new list type onto the
@@ -166,7 +165,6 @@ class Text_Wiki_Parse_List extends Text_Wiki_Parse {
 
             // remove a level from the list?
             while (count($stack) > $level) {
-
                 // so we don't keep counting the stack, we set up a temp
                 // var for the count.  -1 becuase we're going to pop the
                 // stack in the next command.  $tmp will then equal the

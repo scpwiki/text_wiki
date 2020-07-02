@@ -27,7 +27,8 @@
 *
 */
 
-class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Email extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -46,9 +47,10 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
                         '(?:\.[a-z0-9\-]+)+';      # Allow a dot so long as is is not the first
                         # TODO: Replace this trash, probably with a filter_var statement.
 
-    function parse(){
+    function parse()
+    {
 
-    	 	// described emails
+            // described emails
         $tmp_regex = '/\[(' . $this->regex . ')\s(.+?)\]/i';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
@@ -56,17 +58,17 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
             $this->wiki->source
         );
 
-    		// standalone emails
+            // standalone emails
         $tmp_regex = '/' . $this->regex . '/i';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
             array(&$this, 'process'),
             $this->wiki->source
         );
-
     }
 
-    function process(&$matches){
+    function process(&$matches)
+    {
         $options = array(
             'email' => $matches[0],
             'text' => $matches[0]
@@ -75,7 +77,8 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
         return $this->wiki->addToken($this->rule, $options);
     }
 
-	function processDescr(&$matches){
+    function processDescr(&$matches)
+    {
         $options = array(
            'email' => $matches[1],
             'text' => $matches[2]
@@ -83,5 +86,4 @@ class Text_Wiki_Parse_Email extends Text_Wiki_Parse {
 
         return $this->wiki->addToken($this->rule, $options);
     }
-
 }

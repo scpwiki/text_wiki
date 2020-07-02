@@ -27,7 +27,8 @@
 *
 */
 
-class Text_Wiki_Parse_Footnoteitem extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Footnoteitem extends Text_Wiki_Parse
+{
 
     /**
     *

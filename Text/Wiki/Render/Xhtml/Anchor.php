@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Anchor extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Anchor extends Text_Wiki_Render
+{
 
     public $conf = array(
         'css' => null
@@ -33,7 +34,7 @@ class Text_Wiki_Render_Xhtml_Anchor extends Text_Wiki_Render {
     {
         extract($options); // $type, $name
 
-       $format = "<a$ name=\"%s\"></a>";
-       return sprintf($format, htmlentities($name));
+        $format = "<a$ name=\"%s\"></a>";
+        return sprintf($format, htmlentities($name));
     }
 }

@@ -26,9 +26,10 @@
  * @author Michal Frackowiak
  *
  */
-class Text_Wiki_Parse_Button extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Button extends Text_Wiki_Parse
+{
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '\[\[' .             # Opening brackets
                         'button\s+' .        # Tag name
                         '([a-z0-9\-_]+)' .   # Button name
@@ -44,10 +45,10 @@ class Text_Wiki_Parse_Button extends Text_Wiki_Parse {
 
         $allowedAttrs = array('text', 'class', 'style');
         $options = array();
-        foreach($allowedAttrs as $aa){
-        	if(isset($attr[$aa])){
-        		$options[$aa] = $attr[$aa];
-        	}
+        foreach ($allowedAttrs as $aa) {
+            if (isset($attr[$aa])) {
+                $options[$aa] = $attr[$aa];
+            }
         }
 
         $type = str_replace("_", "-", $type);
@@ -55,6 +56,5 @@ class Text_Wiki_Parse_Button extends Text_Wiki_Parse {
         $options['type'] = $type;
 
         return $this->wiki->addToken($this->rule, $options);
-
     }
 }
