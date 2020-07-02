@@ -23,10 +23,11 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Function extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Function extends Text_Wiki_Render
+{
 
     public $conf = array(
-    	// list separator for params and throws
+        // list separator for params and throws
         'list_sep' => ', ',
 
         // the "main" format string
@@ -68,7 +69,6 @@ class Text_Wiki_Render_Xhtml_Function extends Text_Wiki_Render {
         // build the set of params
         $list = array();
         foreach ($params as $key => $val) {
-
             // is there a default value?
             if ($val['default']) {
                 $tmp = $this->conf['format_paramd'];

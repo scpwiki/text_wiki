@@ -49,7 +49,8 @@
 *
 */
 
-class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Url extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -122,7 +123,6 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
             "[^ \\/\"\'{$this->wiki->delim}]*\\/" . // no spaces, backslashes, slashes, double-quotes, single quotes, or delimiters;
             ")*" . // end pattern
             "[^ \\t\\n\\/\"{$this->wiki->delim}]*)";
-
     }
 
     /**
@@ -141,16 +141,16 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
         //
 
         // the regular expression for this kind of URL
-        $tmp_regex =    "/" . 
-                        "\[(\*)?" . 
-                        "(" . 
-                        "(?:".$this->regexLiberal.")" . 
+        $tmp_regex =    "/" .
+                        "\[(\*)?" .
+                        "(" .
+                        "(?:".$this->regexLiberal.")" .
                         "|" .
-                        "(?:#[a-zA-Z0-9_\-%]*)" . 
-                        "|" . 
-                        "(?:\/[^\s\t\n\"'".$this->wiki->delim."]*)" . 
-                        ")\s" . 
-                        "([^\]".$this->wiki->delim."]+)\]" . 
+                        "(?:#[a-zA-Z0-9_\-%]*)" .
+                        "|" .
+                        "(?:\/[^\s\t\n\"'".$this->wiki->delim."]*)" .
+                        ")\s" .
+                        "([^\]".$this->wiki->delim."]+)\]" .
                         "/";
 
         // use a custom callback processing method to generate
@@ -163,27 +163,27 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
 
         $postVars = $this->getConf("post_vars");
 
-        if($postVars){
+        if ($postVars) {
             // enable %%foo%% variables to act in described links
             # What is this? I haven't seen it before
-            $tmp_regex =    '/' . 
+            $tmp_regex =    '/' .
                             '\[' .             # Opening bracket
-                            '(\*)?' . 
-                            '(' . 
+                            '(\*)?' .
+                            '(' .
                             '%%' .             # Opening %%
                             '[^%]+' .          # Then at least one character not %
                             '%%' .             # Closing %%
                             '[^\s]*' .         # Then anything except whitespace
-                            ')' . 
+                            ')' .
                             '\s' .             # A whitespace
                             '([^\]]+)' .       # Match anything up until a closing bracket
-                            '\]' . 
+                            '\]' .
                             '/';
             $this->wiki->source = preg_replace_callback(
                 $tmp_regex,
                 array(&$this, 'processPV'),
                 $this->wiki->source
-	        );
+            );
         }
 
         // -------------------------------------------------------------
@@ -193,10 +193,10 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
 
         // the regular expression for this kind of URL
 
-        $tmp_regex =    '/' . 
+        $tmp_regex =    '/' .
                         '(^|[^A-Za-z])' .              # Start of line OR not letters
                         '(\*)?' .                      # Any amount of asterisks
-                        '(' . $this->regex . ')' . 
+                        '(' . $this->regex . ')' .
                         '(.*?)' .                      # Then anything, but as few as possible?
                         '/';
 
@@ -232,8 +232,8 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
             'text' => $matches[3]
         );
 
-        if($matches[2] == '*'){
-        		$options['target']='_blank';
+        if ($matches[2] == '*') {
+                $options['target']='_blank';
         }
         // tokenize
         return $matches[1] . $this->wiki->addToken($this->rule, $options) . $matches[6];
@@ -268,25 +268,25 @@ class Text_Wiki_Parse_Url extends Text_Wiki_Parse {
             'text' => $matches[3]
         );
 
-        if($matches[1] == '*'){
-        		$options['target']='_blank';
+        if ($matches[1] == '*') {
+                $options['target']='_blank';
         }
 
         // tokenize
         return $this->wiki->addToken($this->rule, $options);
     }
 
-     function processPV(&$matches)
+    function processPV(&$matches)
     {
         // set options
         $options = array(
-            'type' => 'descr',
-            'href' => $matches[2],
-            'text' => $matches[3]
+           'type' => 'descr',
+           'href' => $matches[2],
+           'text' => $matches[3]
         );
 
-        if($matches[1] == '*'){
-        		$options['target']='_blank';
+        if ($matches[1] == '*') {
+                $options['target']='_blank';
         }
 
         // tokenize

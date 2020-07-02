@@ -29,7 +29,8 @@
 *
 */
 
-class Text_Wiki_Parse_Equationreference extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Equationreference extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -42,8 +43,8 @@ class Text_Wiki_Parse_Equationreference extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[eref\s(.*?)\]\]' . 
+    public $regex =     '/' .
+                        '\[\[eref\s(.*?)\]\]' .
                         '/';
     /**
     *
@@ -62,7 +63,7 @@ class Text_Wiki_Parse_Equationreference extends Text_Wiki_Parse {
 
     function process(&$matches)
     {
-    		$label = trim($matches[1]);
+            $label = trim($matches[1]);
 
         $options = array('label'=>$label);
 

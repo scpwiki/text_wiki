@@ -34,7 +34,8 @@
 *
 */
 
-class Text_Wiki_Parse_Toc extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Toc extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -49,14 +50,14 @@ class Text_Wiki_Parse_Toc extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '^' .          # Start of line
                         '(?:\n*)' .    # Allow any number of newlines (why)
-                        '\[\[' . 
+                        '\[\[' .
                         '(f[<>])?' .   # Float direction - f> or f<
-                        'toc' . 
+                        'toc' .
                         '(\s.*)?' .    # Parameters
-                        '\]\]' . 
+                        '\]\]' .
                         '(\n)*' .      # Allow any number of newlines
                         '/m';
     # The newlines capture may interfere with a [[newlines]] module
@@ -101,12 +102,11 @@ class Text_Wiki_Parse_Toc extends Text_Wiki_Parse {
             )
         );
 
-        if(strtolower($this->wiki->currentFormat) == 'xhtmleditable'){
-        	return "\n\n$output\n\n";
+        if (strtolower($this->wiki->currentFormat) == 'xhtmleditable') {
+            return "\n\n$output\n\n";
         }
 
         foreach ($this->wiki->getTokens('Heading') as $key => $val) {
-
             if ($val[1]['type'] != 'start') {
                 continue;
             }
@@ -132,7 +132,8 @@ class Text_Wiki_Parse_Toc extends Text_Wiki_Parse {
         }
 
         $output .= $this->wiki->addToken(
-            $this->rule, array(
+            $this->rule,
+            array(
                 'type' => 'list_end',
                 'level' => 0,
                 'align' => $matches[1]

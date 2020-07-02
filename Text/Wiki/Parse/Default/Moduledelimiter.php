@@ -28,7 +28,8 @@
 *
 */
 
-class Text_Wiki_Parse_Moduledelimiter extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Moduledelimiter extends Text_Wiki_Parse
+{
 
     /**
     *

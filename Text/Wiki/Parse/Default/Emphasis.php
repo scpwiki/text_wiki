@@ -35,7 +35,8 @@
 *
 */
 
-class Text_Wiki_Parse_Emphasis extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Emphasis extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -50,12 +51,12 @@ class Text_Wiki_Parse_Emphasis extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     "/" . 
+    public $regex =     "/" .
                         "\/\/" .                # //
-                        "(" . 
+                        "(" .
                         "[^\s]" .               # Italic text cannot start with whitespace
                         "(?:.*?[^\s])?" .       # Anything that does not end in whitespace
-                        ")" . 
+                        ")" .
                         "\/\/" .                # //
                         "/";
 
@@ -79,11 +80,13 @@ class Text_Wiki_Parse_Emphasis extends Text_Wiki_Parse {
     function process(&$matches)
     {
         $start = $this->wiki->addToken(
-            $this->rule, array('type' => 'start')
+            $this->rule,
+            array('type' => 'start')
         );
 
         $end = $this->wiki->addToken(
-            $this->rule, array('type' => 'end')
+            $this->rule,
+            array('type' => 'end')
         );
 
         return $start . $matches[1] . $end;

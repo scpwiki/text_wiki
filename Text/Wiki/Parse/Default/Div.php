@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Div extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Div extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -61,7 +62,8 @@ class Text_Wiki_Parse_Div extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $content = $matches[2];
 
         $attr = $this->getAttrs(trim($matches[1]));
@@ -83,16 +85,18 @@ class Text_Wiki_Parse_Div extends Text_Wiki_Parse {
             'type' => 'end'));
 
         return $start . "\n\n" . $content . "\n\n" . $end;
-
     }
 
-    function parse() {
+    function parse()
+    {
         $oldSource = $this->wiki->source;
         $this->wiki->source = preg_replace_callback(
-            $this->regex, array(&$this, 'process'), $this->wiki->source);
+            $this->regex,
+            array(&$this, 'process'),
+            $this->wiki->source
+        );
         if ($oldSource != $this->wiki->source) {
             $this->parse();
         }
     }
-
 }

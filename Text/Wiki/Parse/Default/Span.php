@@ -27,7 +27,8 @@
  *
  */
 
-class Text_Wiki_Parse_Span extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Span extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -40,12 +41,12 @@ class Text_Wiki_Parse_Span extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '\[\[span' . 
+    public $regex =     '/' .
+                        '\[\[span' .
                         '(\s.[^\]]*)?' .     # Parameters
-                        '\]\]' . 
+                        '\]\]' .
                         '((?:(?R)|.)*?)' .   # Contents - nesting is ok
-                        '\[\[\/span\]\]' . 
+                        '\[\[\/span\]\]' .
                         '/msi';
 
     /**
@@ -63,7 +64,8 @@ class Text_Wiki_Parse_Span extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $content = $matches[2];
 
@@ -83,16 +85,18 @@ class Text_Wiki_Parse_Span extends Text_Wiki_Parse {
         $end = $this->wiki->addToken($this->rule, array('type' => 'end'));
 
         return $start . $content . $end;
-
     }
 
-    function parse() {
+    function parse()
+    {
         $oldSource = $this->wiki->source;
-        $this->wiki->source = preg_replace_callback($this->regex,
-            array(&$this, 'process'), $this->wiki->source);
+        $this->wiki->source = preg_replace_callback(
+            $this->regex,
+            array(&$this, 'process'),
+            $this->wiki->source
+        );
         if ($oldSource != $this->wiki->source) {
             $this->parse();
         }
     }
-
 }

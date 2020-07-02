@@ -25,7 +25,8 @@
 *
 */
 
-class Text_Wiki_Parse_Embed extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Embed extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -38,10 +39,10 @@ class Text_Wiki_Parse_Embed extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[embed(?:audio|video)?\]\]' . 
-                        '(.*?)' . 
-                        '\[\[\/embed(?:audio|video)?\]\]' . 
+    public $regex =     '/' .
+                        '\[\[embed(?:audio|video)?\]\]' .
+                        '(.*?)' .
+                        '\[\[\/embed(?:audio|video)?\]\]' .
                         '/msi';
     /**
     *
@@ -60,10 +61,9 @@ class Text_Wiki_Parse_Embed extends Text_Wiki_Parse {
 
     function process(&$matches)
     {
-	    	$content =trim($matches[1]);
-		$options = array('content' => $content);
+            $content =trim($matches[1]);
+        $options = array('content' => $content);
 
         return $this->wiki->addToken($this->rule, $options);
-
     }
 }

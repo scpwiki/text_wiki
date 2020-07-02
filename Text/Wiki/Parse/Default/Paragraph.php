@@ -34,7 +34,8 @@
  *
  */
 
-class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -48,7 +49,7 @@ class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
      */
 
     # Matches some text followed by two newlines
-    public $regex = '/' . 
+    public $regex = '/' .
                     '^' .      # Start of line
                     '.*?' .    # Anything
                     '\n' .     # A newline
@@ -58,7 +59,7 @@ class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
 
     public $conf = array(
         'skip' => array('blockquote', // are we sure about this one?
-'code', 'clearfloat',
+    'code', 'clearfloat',
             'heading', 'horiz', 'deflist', 'table',
             'tableadv', 'list', 'toc', 'center',
             'tabview', 'div', 'divalignleft',
@@ -90,7 +91,8 @@ class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $delim = $this->wiki->delim;
 
         // was anything there?
@@ -141,7 +143,6 @@ class Text_Wiki_Parse_Paragraph extends Text_Wiki_Parse {
             // return the entire matched text.
             return $matches[0];
         } else {
-
             $start = $this->wiki->addToken($this->rule, array(
                 'type' => 'start'));
 

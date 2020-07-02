@@ -18,7 +18,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Mathinline extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Mathinline extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -35,7 +36,8 @@ class Text_Wiki_Render_Xhtml_Mathinline extends Text_Wiki_Render {
      *
      */
 
-    function token($options) {
+    function token($options)
+    {
         $content = $options['content'];
         $hashcode = md5($content);
         $runData = Ozone::getRunData();
@@ -82,6 +84,5 @@ class Text_Wiki_Render_Xhtml_Mathinline extends Text_Wiki_Render {
         $out = '<img src="http://' . $site->getDomain() . '/local--math/inline/' . $imgFile . '" alt="' . htmlentities($content) . '" />';
 
         return $out;
-
     }
 }

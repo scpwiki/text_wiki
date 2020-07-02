@@ -26,7 +26,8 @@
  *
  */
 
-class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -39,10 +40,10 @@ class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '^' .                    # Start of line
                         '\[\[(=|<|>|==)\]\]' .   # Opening tag with variations
-                        '\n' . 
+                        '\n' .
                         '((?:(?R)|.)*?)' .       # Contents of tag - nesting is allowed
                         '\[\[\/\\1\]\]' .        # Closing tag that matches opening tag
                         '$' .                    # End of line
@@ -63,7 +64,8 @@ class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $align = $matches[1];
         $content = $matches[2];
 
@@ -86,10 +88,10 @@ class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse {
             'type' => 'end'));
 
         return $start . "\n\n" . $content . "\n\n" . $end;
-
     }
 
-    function parse() {
+    function parse()
+    {
         $oldSource = $this->wiki->source;
         $this->wiki->source = preg_replace_callback($this->regex, array(
             &$this, 'process'), $this->wiki->source);
@@ -97,5 +99,4 @@ class Text_Wiki_Parse_Divalign extends Text_Wiki_Parse {
             $this->parse();
         }
     }
-
 }

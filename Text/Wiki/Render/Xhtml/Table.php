@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Table extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Table extends Text_Wiki_Render
+{
 
     public $conf = array(
         'css_table' => null,
@@ -58,81 +59,78 @@ class Text_Wiki_Render_Xhtml_Table extends Text_Wiki_Render {
         $pad = '    ';
 
         switch ($type) {
-
-        case 'table_start':
-            $css = $this->formatConf(' class="%s"', 'css_table');
-            return "\n\n<table$css$format>\n";
+            case 'table_start':
+                $css = $this->formatConf(' class="%s"', 'css_table');
+                return "\n\n<table$css$format>\n";
             break;
 
-        case 'table_end':
-            return "</table>\n\n";
+            case 'table_end':
+                return "</table>\n\n";
             break;
 
-        case 'caption_start':
-            $css = $this->formatConf(' class="%s"', 'css_caption');
-            return "<caption$css$format>\n";
+            case 'caption_start':
+                $css = $this->formatConf(' class="%s"', 'css_caption');
+                return "<caption$css$format>\n";
             break;
 
-        case 'caption_end':
-            return "</caption>\n";
+            case 'caption_end':
+                return "</caption>\n";
             break;
 
-        case 'row_start':
-            $css = $this->formatConf(' class="%s"', 'css_tr');
-            return "$pad<tr$css$format>\n";
+            case 'row_start':
+                $css = $this->formatConf(' class="%s"', 'css_tr');
+                return "$pad<tr$css$format>\n";
             break;
 
-        case 'row_end':
-            return "$pad</tr>\n";
+            case 'row_end':
+                return "$pad</tr>\n";
             break;
 
-        case 'cell_start':
+            case 'cell_start':
+                // base html
+                $html = $pad . $pad;
 
-            // base html
-            $html = $pad . $pad;
+                // is this a TH or TD cell?
+                if ($attr == 'header') {
+                    // start a header cell
+                    $css = $this->formatConf(' class="%s"', 'css_th');
+                    $html .= "<th$css";
+                } else {
+                    // start a normal cell
+                    $css = $this->formatConf(' class="%s"', 'css_td');
+                    $html .= "<td$css";
+                }
 
-            // is this a TH or TD cell?
-            if ($attr == 'header') {
-                // start a header cell
-                $css = $this->formatConf(' class="%s"', 'css_th');
-                $html .= "<th$css";
-            } else {
-                // start a normal cell
-                $css = $this->formatConf(' class="%s"', 'css_td');
-                $html .= "<td$css";
-            }
+                // add the column span
+                if ($span > 1) {
+                    $html .= " colspan=\"$span\"";
+                }
 
-            // add the column span
-            if ($span > 1) {
-                $html .= " colspan=\"$span\"";
-            }
+                // add the row span
+                if ($rowspan > 1) {
+                    $html .= " rowspan=\"$rowspan\"";
+                }
 
-            // add the row span
-            if ($rowspan > 1) {
-                $html .= " rowspan=\"$rowspan\"";
-            }
+                // add alignment
+                if ($attr != 'header' && $attr != '') {
+                    $html .= " style=\"text-align: $attr;\"";
+                }
 
-            // add alignment
-            if ($attr != 'header' && $attr != '') {
-                $html .= " style=\"text-align: $attr;\"";
-            }
-
-            // done!
-            $html .= " $format>";
-            return $html;
+                // done!
+                $html .= " $format>";
+                return $html;
             break;
 
-        case 'cell_end':
-            if ($attr == 'header') {
-                return "</th>\n";
-            } else {
-                return "</td>\n";
-            }
-            break;
+            case 'cell_end':
+                if ($attr == 'header') {
+                    return "</th>\n";
+                } else {
+                    return "</td>\n";
+                }
+                break;
 
-        default:
-            return '';
-
+            default:
+                return '';
         }
     }
 }

@@ -30,7 +30,8 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki_Parse::Text_Wiki_Parse()
  */
-class Text_Wiki_Parse_Smiley extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Smiley extends Text_Wiki_Parse
+{
 
     /**
      * Configuration keys for this rule
@@ -146,11 +147,13 @@ class Text_Wiki_Parse_Smiley extends Text_Wiki_Parse {
     function process(&$matches)
     {
         // tokenize
-        return $this->wiki->addToken($this->rule,
+        return $this->wiki->addToken(
+            $this->rule,
             array(
                 'symbol' => $matches[1],
                 'name'   => $this->_smileys[$matches[1]][0],
                 'desc'   => $this->_smileys[$matches[1]][1]
-            ));
+            )
+        );
     }
 }

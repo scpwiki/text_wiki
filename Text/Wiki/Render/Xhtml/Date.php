@@ -18,15 +18,17 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Date extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Date extends Text_Wiki_Render
+{
 
-    function token($options){
-       $timestamp = $options['timestamp'];
-       $format = $options['format'];
-       if($format){
-       	$format = '|'.$format;
-       }
-       	$output = '<span class="odate">' . $timestamp . $format . '</span>';
+    function token($options)
+    {
+        $timestamp = $options['timestamp'];
+        $format = $options['format'];
+        if ($format) {
+            $format = '|'.$format;
+        }
+        $output = '<span class="odate">' . $timestamp . $format . '</span>';
 
         return $output;
     }

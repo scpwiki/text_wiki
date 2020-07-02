@@ -26,7 +26,8 @@
  *
  */
 
-class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse
+{
 
     private static $_counter = 0;
 
@@ -41,17 +42,17 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '^' . 
+    public $regex =     '/' .
+                        '^' .
                         '\[\[(?:tabview|tabs)(\s.*?)?\]\]' .   # Start tabview with parameters
-                        '\s*' . 
+                        '\s*' .
                         '(' .                                  # Capture all tabs as a single group
                             '(?:\[\[tab(\s.*?)?\]\]' .         # Tab opening tag, with parameters
                             '.*?' .                            # Contents of tab - no nesting
                             '\[\[\/tab\]\]' .                  # Tab closing tag
-                            '\s*' . 
+                            '\s*' .
                             ')+' .                             # Require at least one tab
-                        ')' . 
+                        ')' .
                         '\[\[\/(?:tabview|tabs)\]\]\s*' .      # Tabview closing tag
                         '/msi';
 
@@ -61,7 +62,8 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
 
     private $_tabCounter = 0;
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $this->_tabs = array();
         $this->_tabCounter = 0;
 
@@ -88,21 +90,24 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
         // find tabs
 
 
-        $content = preg_replace_callback(   '/' . 
+        $content = preg_replace_callback(
+            '/' .
                                             '\[\[tab' .            # Single tab opening tag
                                             '(\s+[^\]]+?)?' .      # Title of tab
                                             '(' .                  # Extract parameters
-                                                '(?:\s+' . 
-                                                '[a-z0-9\-_]+' . 
-                                                '=' . 
+                                                '(?:\s+' .
+                                                '[a-z0-9\-_]+' .
+                                                '=' .
                                                 '"[^"]+"' .        # Parameter value is in quotes
                                                 ')+' .             # At least one parameter, if any are present
                                             ')?' .                 # Parameters are optional
-                                            '\]\]' . 
+                                            '\]\]' .
                                             '(.*?)' .              # Contents of tab - cannot contain [[tab]]
                                             '\[\[\/tab\]\]\n*' .   # Tab closing tag
                                             '/msi',
-            array($this, '_handleTab'), $content);
+            array($this, '_handleTab'),
+            $content
+        );
 
         $options = array('args' => $args, 'type' => 'start',
             'tabs' => $this->_tabs,
@@ -116,10 +121,10 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
         self::$_counter++;
 
         return $matches[1] . $matches[1] . $start . "\n\n" . $content . "\n\n" . $end;
-
     }
 
-    function parse() {
+    function parse()
+    {
 
         $oldSource = $this->wiki->source;
         $this->wiki->source = preg_replace_callback($this->regex, array(
@@ -129,21 +134,24 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
         }
     }
 
-    protected function _handleTab($matches) {
+    protected function _handleTab($matches)
+    {
         $argString = trim($matches[2]);
         // bad hack - I will forgget how it works in a few minutes
         $ff = false;
-        if (preg_match( '/' . 
+        if (preg_match(
+            '/' .
                         '^' .                # Start of text
                         '[a-z0-9\-_]+' .     # Parameter name
-                        '=' . 
+                        '=' .
                         '"[^"]+"' .          # Parameter value in quotes
                         '$' .                # End of text
                         '/si',
-            trim($matches[1]))) {
+            trim($matches[1])
+        )) {
                 $argString .= ' ' . $matches[1];
                 $ff = true;
-            }
+        }
         $args = $this->getAttrs($argString);
         if (!isset($args['title']) && !$ff) {
             $args['title'] = trim($matches[1]);
@@ -158,5 +166,4 @@ class Text_Wiki_Parse_Tabview extends Text_Wiki_Parse {
         $this->_tabCounter++;
         return $startTabToken . "\n\n" . $content . "\n\n" . $this->_endTabToken;
     }
-
 }

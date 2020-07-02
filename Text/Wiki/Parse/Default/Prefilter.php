@@ -33,7 +33,8 @@
 *
 */
 
-class Text_Wiki_Parse_Prefilter extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Prefilter extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -46,12 +47,18 @@ class Text_Wiki_Parse_Prefilter extends Text_Wiki_Parse {
     function parse()
     {
         // convert DOS line endings
-        $this->wiki->source = str_replace("\r\n", "\n",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\r\n",
+            "\n",
+            $this->wiki->source
+        );
 
         // convert Macintosh line endings
-        $this->wiki->source = str_replace("\r", "\n",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\r",
+            "\n",
+            $this->wiki->source
+        );
 
         // trim "whitespace lines"
         $this->wiki->source = preg_replace("/^\s+$/m", '', $this->wiki->source);
@@ -60,8 +67,11 @@ class Text_Wiki_Parse_Prefilter extends Text_Wiki_Parse {
        // $this->wiki->source = str_replace("\\\n", "",
 
         // convert tabs to four-spaces
-        $this->wiki->source = str_replace("\t", "    ",
-            $this->wiki->source);
+        $this->wiki->source = str_replace(
+            "\t",
+            "    ",
+            $this->wiki->source
+        );
 
         // add extra newlines at the top and end; this
         // seems to help many rules.
@@ -70,12 +80,14 @@ class Text_Wiki_Parse_Prefilter extends Text_Wiki_Parse {
         // down to two newlines.
         $find = "/(\n\s*){3,}/m";
         $replace = "\n\n";
-        $this->wiki->source = preg_replace($find, $replace,
-            $this->wiki->source);
+        $this->wiki->source = preg_replace(
+            $find,
+            $replace,
+            $this->wiki->source
+        );
 
         $d = utf8_encode("\xFC");
         $this->wiki->source = str_replace("$d$d", '', $this->wiki->source);
         // TODO: sth more intelligent?Prefilter.php
     }
-
 }

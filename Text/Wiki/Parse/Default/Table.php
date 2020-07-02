@@ -34,7 +34,8 @@
 *
 */
 
-class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Table extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -49,12 +50,12 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\n' . 
-                        '(' . 
+    public $regex =     '/' .
+                        '\n' .
+                        '(' .
                             '(\|\|)' .   # ||
                             '.*?' .      # Contents of rest of row
-                        ')' . 
+                        ')' .
                         '(\n)' .         # Newline
                         '(?!(\|\|))' .   # Assert that the newline is not followed by ||
                         '/s';
@@ -106,7 +107,6 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
 
         // loop through each row
         foreach ($rows as $row) {
-
             // increase the row count
             $num_rows ++;
 
@@ -136,18 +136,14 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
             // is before the first double-pipe, and the "last" cell is
             // after the last double-pipe. both are always empty.
             for ($i = 1; $i < $last; $i ++) {
-
                 // if there is no content at all, then it's an instance
                 // of two sets of || next to each other, indicating a
                 // span.
                 if ($cell[$i] == '') {
-
                     // add to the span and loop to the next cell
                     $span += 1;
                     continue;
-
                 } else {
-
                     // this cell has content.
 
                     // find any special "attr"ibute cell markers
@@ -196,7 +192,6 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
                     // reset the span.
                     $span = 1;
                 }
-
             }
 
             // end the row
@@ -204,7 +199,6 @@ class Text_Wiki_Parse_Table extends Text_Wiki_Parse {
                 $this->rule,
                 array('type' => 'row_end')
             );
-
         }
 
         // wrap the return value in start and end tokens

@@ -29,7 +29,8 @@
 *
 */
 
-class Text_Wiki_Parse_Divprefilter extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Divprefilter extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -42,10 +43,10 @@ class Text_Wiki_Parse_Divprefilter extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[\/div\]\]' . 
-                        '(\s*?)' . 
-                        '\[\[div' . 
+    public $regex =     '/' .
+                        '\[\[\/div\]\]' .
+                        '(\s*?)' .
+                        '\[\[div' .
                         '/msi';
     /**
     *
@@ -65,6 +66,5 @@ class Text_Wiki_Parse_Divprefilter extends Text_Wiki_Parse {
     function process(&$matches)
     {
         return '[[/div]][[div';
-
     }
 }

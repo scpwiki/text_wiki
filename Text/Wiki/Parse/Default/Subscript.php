@@ -30,7 +30,8 @@
  *
  */
 
-class Text_Wiki_Parse_Subscript extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Subscript extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -45,10 +46,10 @@ class Text_Wiki_Parse_Subscript extends Text_Wiki_Parse {
      *
      */
 
-    public $regex = '/' . 
-                    ',,' . 
+    public $regex = '/' .
+                    ',,' .
                     '([^\s](?:.*?[^\s])?)' .   # Match anything that does not start or end with whitespace
-                    ',,' . 
+                    ',,' .
                     '/';
 
     /**
@@ -67,7 +68,8 @@ class Text_Wiki_Parse_Subscript extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $start = $this->wiki->addToken($this->rule, array(
             'type' => 'start'));
 

@@ -34,7 +34,8 @@
 *
 */
 
-class Text_Wiki_Parse_Heading extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Heading extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -76,10 +77,10 @@ class Text_Wiki_Parse_Heading extends Text_Wiki_Parse {
         // keep a running count for header IDs.  we use this later
         // when constructing TOC entries, etc.
 
-       if($this->wiki->vars['headline_id'] === null){
-       		$this->wiki->vars['headline_id'] = 0;
-       }
-       $id = $this->wiki->vars['headline_id'];
+        if ($this->wiki->vars['headline_id'] === null) {
+            $this->wiki->vars['headline_id'] = 0;
+        }
+        $id = $this->wiki->vars['headline_id'];
 
         $prefix = htmlspecialchars($this->getConf('id_prefix'));
 

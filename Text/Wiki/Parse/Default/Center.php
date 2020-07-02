@@ -35,7 +35,8 @@
  *
  */
 
-class Text_Wiki_Parse_Center extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Center extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -63,7 +64,8 @@ class Text_Wiki_Parse_Center extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $start = $this->wiki->addToken($this->rule, array(
             'type' => 'start'));
 

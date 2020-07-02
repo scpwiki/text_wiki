@@ -20,7 +20,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Comment extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Comment extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -39,7 +40,6 @@ class Text_Wiki_Render_Xhtml_Comment extends Text_Wiki_Render {
 
     function token($options)
     {
-    	 	return '';
-
+            return '';
     }
 }

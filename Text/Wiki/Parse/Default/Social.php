@@ -27,7 +27,8 @@
 *
 */
 
-class Text_Wiki_Parse_Social extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Social extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -40,26 +41,28 @@ class Text_Wiki_Parse_Social extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[social' . 
+    public $regex =     '/' .
+                        '\[\[social' .
                         '(\s+[^\]]+?)?' .   # Parameters
-                        '\]\]' . 
+                        '\]\]' .
                         '/is';
 
     function process(&$matches)
     {
         $sites = trim($matches[1]);
 
-       	$d = utf8_encode("\xFE");
+        $d = utf8_encode("\xFE");
 
-       	$out = $d."module \"wiki/social/SocialBookmarksModule\"";
-	    	if($sites!==null && $sites!=='') {$out.=" ".urlencode('sites="'.$sites.'"')." ";}
-	    	$out.=$d;
+        $out = $d."module \"wiki/social/SocialBookmarksModule\"";
+        if ($sites!==null && $sites!=='') {
+            $out.=" ".urlencode('sites="'.$sites.'"')." ";
+        }
+            $out.=$d;
 
-	    	return $out;
+            return $out;
 
        /* $sites = trim($matches[1]);
-	   	$options = array('sites' => $sites);
+        $options = array('sites' => $sites);
 
         return $this->wiki->addToken($this->rule, $options);
         */

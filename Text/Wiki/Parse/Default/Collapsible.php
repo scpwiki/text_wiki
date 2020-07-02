@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse
+{
 
     static $count = 0;
 
@@ -43,14 +44,14 @@ class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '(\n)?' .         # Start with an optional newline?
-                        '\[\[' . 
+                        '\[\[' .
                         'collapsible' .
                         '(\s.*?)?' .       # Parameters of collapsbile
-                        '\]\]' . 
+                        '\]\]' .
                         '(.*?)' .          # Contents of collapsible - no nesting
-                        '\[\[\/collapsible\]\]\s*' . 
+                        '\[\[\/collapsible\]\]\s*' .
                         '/msi';
 
     /**
@@ -68,7 +69,8 @@ class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $content = $matches[3];
 
@@ -84,7 +86,5 @@ class Text_Wiki_Parse_Collapsible extends Text_Wiki_Parse {
             'count' => self::$count));
         self::$count++;
         return $matches[1] . $matches[1] . $start . "\n\n" . $content . "\n\n" . $end;
-
     }
-
 }

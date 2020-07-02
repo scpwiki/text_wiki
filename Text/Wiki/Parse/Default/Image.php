@@ -30,7 +30,8 @@
  *
  */
 
-class Text_Wiki_Parse_Image extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Image extends Text_Wiki_Parse
+{
 
     /**
      * URL schemes recognized by this rule.
@@ -53,13 +54,13 @@ class Text_Wiki_Parse_Image extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '(' . 
+    public $regex =     '/' .
+                        '(' .
                         '\[\[' .                  # Start opening image tag
                         '((?:f)?[<>=])?' .        # Allow f for flickr integration and <, >, =
-                        'image' . 
+                        'image' .
                         '\s+' .                   # Require a whitespace before parameters
-                        ')' . 
+                        ')' .
                         '(.+?)' .                 # Parameters
                         '(?:\]\])' .              # End opening image tag
                         '(?:(.*?)' .              # Capture any text inside the image element
@@ -83,7 +84,8 @@ class Text_Wiki_Parse_Image extends Text_Wiki_Parse {
      * @return The parser object
      * @access public
      */
-    function Text_Wiki_Parse_Image(&$obj) {
+    function Text_Wiki_Parse_Image(&$obj)
+    {
         $default = $this->conf;
         parent::Text_Wiki_Parse($obj);
 
@@ -109,7 +111,8 @@ class Text_Wiki_Parse_Image extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $pos = strpos($matches[3], ' ');
 
         if ($pos === false) {

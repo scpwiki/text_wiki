@@ -26,7 +26,8 @@
 *
 */
 
-class Text_Wiki_Parse_Size extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Size extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -39,7 +40,7 @@ class Text_Wiki_Parse_Size extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '\[\[size\s([^\]]+)\]\]' .   # Opening tag including parameters
                         '((?:(?R)|.)*?)' .           # Any content in between including other sizes
                         '\[\[\/size\]\]' .           # Closing tag
@@ -62,11 +63,11 @@ class Text_Wiki_Parse_Size extends Text_Wiki_Parse {
     function process(&$matches)
     {
 
-    		$content =$matches[2];
+            $content =$matches[2];
 
-    		$size = trim($matches[1]);
+            $size = trim($matches[1]);
 
-    		$allowedSizes = array(
+            $allowedSizes = array(
                 '/^[0-9\.]{1,5}(em|px|%)$/',
                 '/^xx\-small$/',
                 '/^x\-small$/',
@@ -77,42 +78,42 @@ class Text_Wiki_Parse_Size extends Text_Wiki_Parse {
                 '/^xx\-large$/',
                 '/^smaller$/',
                 '/^larger$/'
-    		);
+            );
 
-    		$good = false;
-    		foreach($allowedSizes as $as){
-    			if(preg_match($as, $size)){
-    				$good=true;
-    				break;
-    			}
-    		}
+            $good = false;
+            foreach ($allowedSizes as $as) {
+                if (preg_match($as, $size)) {
+                    $good=true;
+                    break;
+                }
+            }
 
-    		if($good==false){
-    			return $matches[0];
-    		}
+            if ($good==false) {
+                return $matches[0];
+            }
 
-        $options = array('size'=>$size, 'type'=>'start');
+            $options = array('size'=>$size, 'type'=>'start');
 
-        $start = $this->wiki->addToken($this->rule, $options);
+            $start = $this->wiki->addToken($this->rule, $options);
 
-        $end = $this->wiki->addToken(
-            $this->rule, array('type' => 'end')
-        );
+            $end = $this->wiki->addToken(
+                $this->rule,
+                array('type' => 'end')
+            );
 
         return $start . $content  .$end;
-
     }
 
-    function parse(){
-    	$oldSource = $this->wiki->source;
+    function parse()
+    {
+        $oldSource = $this->wiki->source;
         $this->wiki->source = preg_replace_callback(
-           	$this->regex,
-           	array(&$this, 'process'),
-           	$this->wiki->source
+            $this->regex,
+            array(&$this, 'process'),
+            $this->wiki->source
         );
-        if($oldSource != $this->wiki->source){
-        	$this->parse();
+        if ($oldSource != $this->wiki->source) {
+            $this->parse();
         }
     }
-
 }

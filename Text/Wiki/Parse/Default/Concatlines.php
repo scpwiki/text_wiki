@@ -24,7 +24,8 @@
  * @author Michal Frackowiak
  *
  */
-class Text_Wiki_Parse_Concatlines extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Concatlines extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -34,11 +35,10 @@ class Text_Wiki_Parse_Concatlines extends Text_Wiki_Parse {
      *
      */
 
-    function parse() {
+    function parse()
+    {
 
         // concat lines ending in a backslash
         $this->wiki->source = str_replace("\\\n", "", $this->wiki->source);
-
     }
-
 }

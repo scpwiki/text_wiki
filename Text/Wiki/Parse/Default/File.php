@@ -25,7 +25,8 @@
 *
 */
 
-class Text_Wiki_Parse_File extends Text_Wiki_Parse {
+class Text_Wiki_Parse_File extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -38,26 +39,26 @@ class Text_Wiki_Parse_File extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\[\[file' . 
-                        '\s+' . 
+    public $regex =     '/' .
+                        '\[\[file' .
+                        '\s+' .
                         '(.+?)' .          # Name of file
                         '(?:\|(.+?))?' .   # Pipe, then link text (optional)
-                        '\]\]' . 
+                        '\]\]' .
                         '/i';
 
     function process(&$matches)
     {
 
-    		$file = trim($matches[1]);
-    		$anchor = trim($matches[2]);
+            $file = trim($matches[1]);
+            $anchor = trim($matches[2]);
 
-      	if($anchor == null || $anchor === ''){
-      		$anchor = $file;
-      	}
+        if ($anchor == null || $anchor === '') {
+            $anchor = $file;
+        }
 
-      	$options = array('file' => $file,
-      					 'anchor' => $anchor);
+        $options = array('file' => $file,
+                         'anchor' => $anchor);
         return $this->wiki->addToken($this->rule, $options);
     }
 }

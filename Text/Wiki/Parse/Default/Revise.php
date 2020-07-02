@@ -28,7 +28,8 @@
 *
 */
 
-class Text_Wiki_Parse_Revise extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Revise extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -43,10 +44,10 @@ class Text_Wiki_Parse_Revise extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
-                        '\@\@' . 
+    public $regex =     '/' .
+                        '\@\@' .
                         '(\{*?.*?\}*?)' .   # Text between any number of braces, including none
-                        '\@\@' . 
+                        '\@\@' .
                         '/';
 
     /**
@@ -98,7 +99,6 @@ class Text_Wiki_Parse_Revise extends Text_Wiki_Parse {
 
         // handle text to be deleted
         if ($del !== false) {
-
             // move forward to the end of the deletion mark
             $del += strlen($delmark);
 
@@ -112,31 +112,34 @@ class Text_Wiki_Parse_Revise extends Text_Wiki_Parse {
             }
 
             $output .= $this->wiki->addToken(
-                $this->rule, array('type' => 'del_start')
+                $this->rule,
+                array('type' => 'del_start')
             );
 
             $output .= $text;
 
             $output .= $this->wiki->addToken(
-                $this->rule, array('type' => 'del_end')
+                $this->rule,
+                array('type' => 'del_end')
             );
         }
 
         // handle text to be inserted
         if ($ins !== false) {
-
             // move forward to the end of the insert mark
             $ins += strlen($insmark);
             $text = substr($src, $ins);
 
             $output .= $this->wiki->addToken(
-                $this->rule, array('type' => 'ins_start')
+                $this->rule,
+                array('type' => 'ins_start')
             );
 
             $output .= $text;
 
             $output .= $this->wiki->addToken(
-                $this->rule, array('type' => 'ins_end')
+                $this->rule,
+                array('type' => 'ins_end')
             );
         }
 

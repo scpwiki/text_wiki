@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Heading extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Heading extends Text_Wiki_Render
+{
 
     public $conf = array(
         'css_h1' => null,
@@ -37,28 +38,28 @@ class Text_Wiki_Render_Xhtml_Heading extends Text_Wiki_Render {
 
     function token($options)
     {
-    	$collapse = null;
+        $collapse = null;
         static $jsOutput = false;
         // get nice variable names (id, type, level)
         extract($options);
 
-        switch($type) {
-        case 'start':
-        		$useId = $this->getConf('use_id');
-            $css = $this->formatConf(' class="%s"', "css_h$level");
-            return '
+        switch ($type) {
+            case 'start':
+                $useId = $this->getConf('use_id');
+                $css = $this->formatConf(' class="%s"', "css_h$level");
+                return '
 <h'.$level.' '.($useId ? 'id="'.$id.'"':'').$css.($collapse !== null ? ' onclick="hideTOC(\''.$id.'\');"' : '').'><span>';
 
-        case 'end':
-            return '</span></h'.$level.'>
+            case 'end':
+                return '</span></h'.$level.'>
 '.($collapse !== null ? '<a id="'.$id.'__link" href="javascript:void();" onclick="hideTOC(\''.$id.'\')">['.($collapse ? '+' : '-').']</a>
 ' : '');
-        case 'startContent':
-            if ($collapse !== null) {
-                if ($jsOutput) {
-                    $js = '';
-                } else {
-                    $js = '
+            case 'startContent':
+                if ($collapse !== null) {
+                    if ($jsOutput) {
+                        $js = '';
+                    } else {
+                        $js = '
 <script language="javascript">
 function hideTOC(id) {
     div = document.getElementById(id+"__content");
@@ -73,15 +74,15 @@ function hideTOC(id) {
 }
 </script>
 ';
+                    }
+                } else {
+                    $js = '';
                 }
-            } else {
-                $js = '';
-            }
-            return  $js.'
+                return  $js.'
 <div style="'.($collapse === true ? 'display: none; ' : '').'padding: 0px; margin: 0px; border: none;" id="'.$id.'__content">
 ';
-        case 'endContent':
-            return '
+            case 'endContent':
+                return '
 </div>
 ';
         }

@@ -37,7 +37,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Parse {
+class Text_Wiki_Parse
+{
 
     /**
     *
@@ -117,12 +118,10 @@ class Text_Wiki_Parse {
         // override config options for the rule if specified
         if (isset($this->wiki->parseConf[$this->rule]) &&
             is_array($this->wiki->parseConf[$this->rule])) {
-
             $this->conf = array_merge(
                 $this->conf,
                 $this->wiki->parseConf[$this->rule]
             );
-
         }
     }
 
@@ -142,7 +141,7 @@ class Text_Wiki_Parse {
 
     function parse()
     {
-        if($this->regex){
+        if ($this->regex) {
             $this->wiki->source = preg_replace_callback(
                 $this->regex,
                 array(&$this, 'process'),
@@ -232,7 +231,6 @@ class Text_Wiki_Parse {
 
         // loop through the sections
         foreach ($tmp as $i => $val) {
-
             // first element is always the first key
             if ($i == 0) {
                 $key = trim($val);
@@ -245,10 +243,8 @@ class Text_Wiki_Parse {
             $pos = strrpos($val, '"');
             $attrs[$key] = stripslashes(substr($val, 0, $pos));
             $key = trim(substr($val, $pos+1));
-
         }
 
         return $attrs;
-
     }
 }

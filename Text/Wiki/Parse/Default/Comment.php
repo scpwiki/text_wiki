@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Comment extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Comment extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -41,7 +42,7 @@ class Text_Wiki_Parse_Comment extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '(\n)?' .     # Optional newline?
                         '\[!\-\-' .   # [!--
                         '(.*?)' .     # Any text - no nesting
@@ -63,9 +64,9 @@ class Text_Wiki_Parse_Comment extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         return '';
-
     }
 }

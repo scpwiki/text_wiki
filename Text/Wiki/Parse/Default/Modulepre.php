@@ -27,7 +27,8 @@
  *
  */
 
-class Text_Wiki_Parse_Modulepre extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Modulepre extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -40,15 +41,15 @@ class Text_Wiki_Parse_Modulepre extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '^' .                     # Require start of line
                         '\[\[module654' .         # Start opening tag
-                        '\s' . 
+                        '\s' .
                         '([a-z0-9_\-\/]+)' .      # Module name, alphanumeric + some chars
                         '(\s+.*?)?' .             # Optional module parameters
                         '\]\]' .                  # End opening tag
-                        '\s*\n' . 
-                        '(?:' . 
+                        '\s*\n' .
+                        '(?:' .
                             '(.*?)' .             # Content betweent tags - no nesting
                             '\[\[\/module\]\]' .  # Closing tag
                         ')?' .                    # The content and end tag is optional
@@ -69,11 +70,11 @@ class Text_Wiki_Parse_Modulepre extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         return preg_replace('/^\[\[module654/', '[[module', $matches[0]);
         # Seems to just replace module 654 with standard.
         # Backwards compatibility maybe?
-
     }
 }

@@ -26,7 +26,8 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki::Text_Wiki_Render()
  */
-class Text_Wiki_Render_Xhtml_Smiley extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Smiley extends Text_Wiki_Render
+{
 
     /**
      * Configuration keys for this rule

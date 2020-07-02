@@ -37,7 +37,8 @@
 *
 */
 
-class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse
+{
 
     /**
     *
@@ -51,7 +52,7 @@ class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
     *
     */
 
-    public $regex =     '/' . 
+    public $regex =     '/' .
                         '\n' .            # Start at a newline
                         '((\>).*?\n)' .   # Match a >, then anything up until a newline
                         '(?!(\>))' .      # Assert that the newline is not followed by a >
@@ -93,8 +94,8 @@ class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
         // create an array called $list that contains a new set of
         // matches for the various list-item elements.
         preg_match_all(
-            '/' . 
-            '^' . 
+            '/' .
+            '^' .
             '(\>+?)' .    # At least one >
             '\s' .        # Require exactly one whitespace
             '(.*?\n)' .   # Include anything else up until a newline
@@ -110,7 +111,6 @@ class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
 
         // loop through each list-item element.
         foreach ($list as $key => $val) {
-
             // $val[0] is the full matched list-item line
             // $val[1] is the number of initial '>' chars (indent level)
             // $val[2] is the quote text
@@ -123,7 +123,6 @@ class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
 
             // add a level to the list?
             while ($level > count($stack)) {
-
                 // the current indent level is greater than the number
                 // of stack elements, so we must be starting a new
                 // level.  push the new level onto the stack with a
@@ -146,7 +145,6 @@ class Text_Wiki_Parse_Blockquote extends Text_Wiki_Parse {
 
             // remove a level?
             while (count($stack) > $level) {
-
                 // as long as the stack count is greater than the
                 // current indent level, we need to end list types.
                 // continue adding end-list tokens until the stack count

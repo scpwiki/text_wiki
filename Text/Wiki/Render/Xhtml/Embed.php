@@ -20,7 +20,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render
+{
 
     public $conf = array();
 
@@ -39,7 +40,8 @@ class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render {
 
     public $patterns = array();
 
-    public function Text_Wiki_Render_Xhtml_Embed($obj) {
+    public function Text_Wiki_Render_Xhtml_Embed($obj)
+    {
         parent::Text_Wiki_Render($obj);
 
         $patternDir = WIKIDOT_ROOT . '/conf/wikiparser/embed';
@@ -48,10 +50,10 @@ class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render {
             require $f;
             $this->_patterns = array_merge($this->patterns, $patterns);
         }
-
     }
 
-    function token($options) {
+    function token($options)
+    {
 
         $content = trim($options['content']);
 
@@ -70,6 +72,5 @@ class Text_Wiki_Render_Xhtml_Embed extends Text_Wiki_Render {
 
         //no match...
         return '<div class="error-block">Sorry, no match for the embedded content.</div>';
-
     }
 }

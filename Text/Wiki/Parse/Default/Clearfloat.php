@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Clearfloat extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Clearfloat extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -43,11 +44,11 @@ class Text_Wiki_Parse_Clearfloat extends Text_Wiki_Parse {
      *
      */
 
-    public $regex =     '/' . 
-                        '^' . 
+    public $regex =     '/' .
+                        '^' .
                         '([~]{4,})' .   # ~~~~
                         '(>|<)?' .      # Optional directional modifier
-                        '$' . 
+                        '$' .
                         '/m';
 
     /**
@@ -62,7 +63,8 @@ class Text_Wiki_Parse_Clearfloat extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $side = $matches[2];
         $options = array('side' => $side);
         return "\n\n" . $this->wiki->addToken($this->rule, $options) . "\n\n";

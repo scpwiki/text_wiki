@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Bibitem extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Bibitem extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -42,21 +43,25 @@ class Text_Wiki_Parse_Bibitem extends Text_Wiki_Parse {
      */
     # ??? where is the string???
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
         $label = $matches[1];
         $content = $matches[2];
         $content = trim(str_replace("\n", " ", $content));
         $this->wiki->vars['bibitems'][$label] = $content;
         $id = count($this->wiki->vars['bibitemIds']) + 1;
         $this->wiki->vars['bibitemIds'][$label] = $id;
-        return $this->wiki->addToken($this->rule,
-                array(
+        return $this->wiki->addToken(
+            $this->rule,
+            array(
                     'label' => $label,
                     'id' => $id,
-                    'type' => 'start')) .
+            'type' => 'start')
+        ) .
                  $content . $this->wiki->addToken(
-                        $this->rule,
-                        array(
-                            'type' => 'end'));
+                     $this->rule,
+                     array(
+                     'type' => 'end')
+                 );
     }
 }

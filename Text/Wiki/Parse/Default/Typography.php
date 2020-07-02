@@ -26,7 +26,8 @@
  *
  */
 
-class Text_Wiki_Parse_Typography extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Typography extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -54,11 +55,12 @@ class Text_Wiki_Parse_Typography extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
-
+    function process(&$matches)
+    {
     }
 
-    public function parse() {
+    public function parse()
+    {
         $source = $this->wiki->source;
 
         // fix a few typography things now...

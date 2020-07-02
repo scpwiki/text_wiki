@@ -23,7 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki_Render_Xhtml_Deflist extends Text_Wiki_Render {
+class Text_Wiki_Render_Xhtml_Deflist extends Text_Wiki_Render
+{
 
     public $conf = array(
         'css_dl' => null,
@@ -50,37 +51,35 @@ class Text_Wiki_Render_Xhtml_Deflist extends Text_Wiki_Render {
         $pad = "    ";
 
         switch ($type) {
-
-        case 'list_start':
-            $css = $this->formatConf(' class="%s"', 'css_dl');
-            return "<dl$css>\n";
+            case 'list_start':
+                $css = $this->formatConf(' class="%s"', 'css_dl');
+                return "<dl$css>\n";
             break;
 
-        case 'list_end':
-            return "</dl>\n\n";
+            case 'list_end':
+                return "</dl>\n\n";
             break;
 
-        case 'term_start':
-            $css = $this->formatConf(' class="%s"', 'css_dt');
-            return $pad . "<dt$css>";
+            case 'term_start':
+                $css = $this->formatConf(' class="%s"', 'css_dt');
+                return $pad . "<dt$css>";
             break;
 
-        case 'term_end':
-            return "</dt>\n";
+            case 'term_end':
+                return "</dt>\n";
             break;
 
-        case 'narr_start':
-            $css = $this->formatConf(' class="%s"', 'css_dd');
-            return $pad . $pad . "<dd$css>";
+            case 'narr_start':
+                $css = $this->formatConf(' class="%s"', 'css_dd');
+                return $pad . $pad . "<dd$css>";
             break;
 
-        case 'narr_end':
-            return "</dd>\n";
+            case 'narr_end':
+                return "</dd>\n";
             break;
 
-        default:
-            return '';
-
+            default:
+                return '';
         }
     }
 }

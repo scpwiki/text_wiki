@@ -28,7 +28,8 @@
  *
  */
 
-class Text_Wiki_Parse_Module654 extends Text_Wiki_Parse {
+class Text_Wiki_Parse_Module654 extends Text_Wiki_Parse
+{
 
     /**
      *
@@ -58,7 +59,8 @@ class Text_Wiki_Parse_Module654 extends Text_Wiki_Parse {
      *
      */
 
-    function process(&$matches) {
+    function process(&$matches)
+    {
 
         $moduleName = trim($matches[1]);
 
