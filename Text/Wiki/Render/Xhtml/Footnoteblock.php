@@ -62,7 +62,7 @@ class Text_Wiki_Render_Xhtml_Footnoteblock extends Text_Wiki_Render {
     		foreach($footnotes as $id => $content){
     			$out .= '<div class="footnote-footer" id="footnote-'.$id.'">';
     			$out .= '<a href="javascript:;" ' .
-    					'onclick="WIKIDOT.page.utils.scrollToReference(\'footnoteref-'.$id.'\')">'.$id . '</a>. ' .
+    					'onclick="Wikijump.page.utils.scrollToReference(\'footnoteref-'.$id.'\')">'.$id . '</a>. ' .
     							'<span class="content">'.$content.'</span>';
     			$out .= '</div>';
     		}

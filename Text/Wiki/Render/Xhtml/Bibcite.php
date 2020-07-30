@@ -43,7 +43,7 @@ class Text_Wiki_Render_Xhtml_Bibcite extends Text_Wiki_Render {
         if ($id === null) {
             return '<span class="error-inline">Bibliography item <em>' . $label . '</em> not found.</span>';
         }
-        $out = '<a href="javascript:;" class="bibcite" id="bibcite-' . $id . '"' . ' onclick="WIKIDOT.page.utils.scrollToReference(\'bibitem-' . $idPrefix . $id . '\')">' . $id . '</a>';
+        $out = '<a href="javascript:;" class="bibcite" id="bibcite-' . $id . '"' . ' onclick="Wikijump.page.utils.scrollToReference(\'bibitem-' . $idPrefix . $id . '\')">' . $id . '</a>';
         return $out;
     }
 }

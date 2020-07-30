@@ -41,7 +41,7 @@ class Text_Wiki_Render_Xhtml_Footnoteitem extends Text_Wiki_Render {
             $idPrefix = $this->wiki->getRenderConf('xhtml', 'footnote', 'id_prefix');
             $id = $options['id'];
             $out = '<div class="footnote-footer" id="footnote-' . $idPrefix . $id . '">';
-            $out .= '<a href="javascript:;" ' . 'onclick="WIKIDOT.page.utils.scrollToReference(\'footnoteref-' . $idPrefix . $id . '\')">' . $id . '</a>. ';
+            $out .= '<a href="javascript:;" ' . 'onclick="Wikijump.page.utils.scrollToReference(\'footnoteref-' . $idPrefix . $id . '\')">' . $id . '</a>. ';
             return $out;
         }
         if ($options['type'] == 'end') {

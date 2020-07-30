@@ -41,7 +41,7 @@ class Text_Wiki_Render_Xhtml_Footnote extends Text_Wiki_Render {
         $refs = Text_Wiki_Parse_Math::$equationsArray;
         $id = $options['id'];
         $idPrefix = $this->getConf("id_prefix");
-        $out = '<sup class="footnoteref"><a id="footnoteref-' . $idPrefix . $id . '" href="javascript:;" class="footnoteref"' . ' onclick="WIKIDOT.page.utils.scrollToReference(\'footnote-' . $idPrefix . $id . '\')">' . $id . '</a></sup>';
+        $out = '<sup class="footnoteref"><a id="footnoteref-' . $idPrefix . $id . '" href="javascript:;" class="footnoteref"' . ' onclick="Wikijump.page.utils.scrollToReference(\'footnote-' . $idPrefix . $id . '\')">' . $id . '</a></sup>';
         return $out;
     }
 }

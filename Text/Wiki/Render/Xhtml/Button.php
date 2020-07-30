@@ -58,16 +58,16 @@ class Text_Wiki_Render_Xhtml_Button extends Text_Wiki_Render {
     	);
 
     	$jsOnclick = array(
-    		'edit' => 'WIKIDOT.page.listeners.editClick(event)',
-    		'edit-append' => 'WIKIDOT.page.listeners.append(event)',
-    		'edit-sections' => 'WIKIDOT.page.listeners.toggleEditSections(event)',
-    		'history' => ' WIKIDOT.page.listeners.historyClick(event)',
-    		'print' => 'WIKIDOT.page.listeners.printClick(event)',
-    		'files' => 'WIKIDOT.page.listeners.filesClick(event)',
-    		'tags' => 'WIKIDOT.page.listeners.editTags(event)',
-    		'source' => 'WIKIDOT.page.listeners.viewSourceClick(event)',
+    		'edit' => 'Wikijump.page.listeners.editClick(event)',
+    		'edit-append' => 'Wikijump.page.listeners.append(event)',
+    		'edit-sections' => 'Wikijump.page.listeners.toggleEditSections(event)',
+    		'history' => ' Wikijump.page.listeners.historyClick(event)',
+    		'print' => 'Wikijump.page.listeners.printClick(event)',
+    		'files' => 'Wikijump.page.listeners.filesClick(event)',
+    		'tags' => 'Wikijump.page.listeners.editTags(event)',
+    		'source' => 'Wikijump.page.listeners.viewSourceClick(event)',
     		'talk' => "window.location.href='/talk:'+WIKIREQUEST.info.pageUnixName",
-    		'backlinks' => 'WIKIDOT.page.listeners.backlinksClick(event)'
+    		'backlinks' => 'Wikijump.page.listeners.backlinksClick(event)'
 
     	);
 
