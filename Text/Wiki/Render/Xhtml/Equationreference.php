@@ -41,7 +41,7 @@ class Text_Wiki_Render_Xhtml_Equationreference extends Text_Wiki_Render {
         $refs = Text_Wiki_Parse_Math::$equationsArray;
         $id = $refs[$label];
         $idPrefix = $this->wiki->getRenderConf('xhtml', 'math', 'id_prefix');
-        $out = '<a class="eref" href="javascript:;" onclick="WIKIDOT.page.utils.scrollToReference(\'equation-' . $idPrefix . $id . '\')">' . $id . '</a>';
+        $out = '<a class="eref" href="javascript:;" onclick="Wikijump.page.utils.scrollToReference(\'equation-' . $idPrefix . $id . '\')">' . $id . '</a>';
 
         return $out;
     }

@@ -75,7 +75,7 @@ class Text_Wiki_Parse_Form extends Text_Wiki_Parse {
         if (substr($dataYaml, 0, 2) == '%%') {
             $dataYaml = '';
         }
-        $form = Wikidot_Form::fromYaml($formYaml, $dataYaml);
+        $form = Wikijump\Form::fromYaml($formYaml, $dataYaml);
 
         $output = $this->wiki->addToken($this->rule, array('begin' => 1));
 

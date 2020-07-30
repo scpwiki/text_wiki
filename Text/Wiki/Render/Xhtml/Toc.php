@@ -84,7 +84,7 @@ class Text_Wiki_Render_Xhtml_Toc extends Text_Wiki_Render {
 			}
             // add the title, and done
             $html .= '>';
-            $html .= '<div id="toc-action-bar"><a href="javascript:;" onclick="WIKIDOT.page.listeners.foldToc(event)">'._('fold').'</a><a style="display: none" href="javascript:;" onclick="WIKIDOT.page.listeners.unfoldToc(event)">'._('unfold').'</a></div>';
+            $html .= '<div id="toc-action-bar"><a href="javascript:;" onclick="Wikijump.page.listeners.foldToc(event)">'._('fold').'</a><a style="display: none" href="javascript:;" onclick="Wikijump.page.listeners.unfoldToc(event)">'._('unfold').'</a></div>';
             $html .= '<div class="title">'._('Table of Contents').'</div>';
             $html .= '<div id="toc-list">';
             return $html;
