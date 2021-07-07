@@ -48,7 +48,9 @@ class Text_Wiki_Parse_Separator extends Text_Wiki_Parse {
 
     public $regex =     '/' . 
                         '^' . 
-                        '([=]{4,})' . 	# "====", four or more =
+                        '([=]{4,})' . 	    # "====", four or more =
+                        '\s?' .
+                        '([A-z0-9_\-]*)' .  # Name, if named section
                         '$' . 
                         '/m';
 
